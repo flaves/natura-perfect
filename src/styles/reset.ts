@@ -43,6 +43,10 @@ const reset = css`
     padding: 0;
   }
 
+  h2 {
+    font-size: 60px;
+  }
+
   ul {
     margin: 0;
     padding: 0;

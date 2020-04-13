@@ -26,7 +26,7 @@ export interface ThemeType {
 
 const theme: ThemeType = {
   color: {
-    primary: `hsl(60, 4%, 11%)`,
+    primary: `hsl(164, 19%, 27%)`,
     accent: `hsl(60, 4%, 11%)`,
     background: `hsl(0, 0%, 9%)`,
     heading: `hsl(0, 0%, 0%)`,
