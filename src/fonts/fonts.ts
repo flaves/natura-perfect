@@ -6,10 +6,16 @@ import GilroyMedium from './gilroy-medium.otf';
 import GilroySemiBold from './gilroy-semibold.otf';
 
 // Mixta
+import MixtaRegular from './mixta-regular.otf';
 import MixtaBold from './mixta-bold.otf';
 import MixtaBlack from './mixta-black.otf';
 
 export const MixtaFont = css`
+  @font-face {
+    font-family: Mixta;
+    font-weight: 400;
+    src: url(${MixtaRegular});
+  }
   @font-face {
     font-family: Mixta;
     font-weight: 700;
