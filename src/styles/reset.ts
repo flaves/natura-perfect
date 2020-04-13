@@ -14,6 +14,7 @@ const reset = css`
 
   html {
     font-family: Gilroy, Helvetica Neue, sans-serif;
+    height: 100%;
   }
 
   body {
@@ -45,6 +46,7 @@ const reset = css`
 
   h2 {
     font-size: 60px;
+    margin-bottom: 20px;
   }
 
   ul {
@@ -55,6 +57,11 @@ const reset = css`
 
   address {
     font-style: normal;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
   }
 `;
 
