@@ -1,13 +1,34 @@
 import { css } from '@emotion/core';
 
+import { GilroyFont, MixtaFont } from '../fonts/fonts';
+
 const reset = css`
-  * {
-    font-family: Helvetica Neue, sans-serif;
+  ${GilroyFont}
+  ${MixtaFont}
+  
+  *,
+  *:after,
+  *:before {
+    box-sizing: inherit;
+  }
+
+  html {
+    font-family: Gilroy, Helvetica Neue, sans-serif;
   }
 
   body {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Mixta, Helvetica Neue, sans-serif;
   }
 
   h1,
