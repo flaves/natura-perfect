@@ -35,6 +35,8 @@ const Hero: React.FC = () => {
   return (
     <section
       css={css`
+        margin-bottom: 150px;
+
         ${mq(`md`)} {
           display: flex;
         }

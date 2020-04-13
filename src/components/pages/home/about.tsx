@@ -5,6 +5,8 @@ import Img from 'gatsby-image';
 
 import mq from '../../../styles/mq';
 
+import Container from '../../styled/container';
+
 import { ImageType } from '../../../types/image';
 
 const query = graphql`
@@ -16,12 +18,13 @@ const query = graphql`
       edges {
         node {
           childImageSharp {
+            id
             fluid(
               maxWidth: 400
               maxHeight: 500
               fit: COVER
               cropFocus: CENTER
-              quality: 60
+              quality: 80
             ) {
               ...GatsbyImageSharpFluid
             }
@@ -51,6 +54,7 @@ const About: React.FC = () => {
         css={css`
           ${mq(`md`)} {
             display: flex;
+            margin: 0 -20px;
           }
         `}
       >
@@ -58,9 +62,34 @@ const About: React.FC = () => {
           <li
             key={image?.childImageSharp?.id}
             css={css`
+              margin-bottom: 50px;
+
+              &:last-of-type {
+                margin-bottom: 0;
+              }
+
               ${mq(`md`)} {
                 flex: 0 0 33.3333333%;
-                max-width: 0 0 33.3333333%;
+                max-width: 33.3333333%;
+                margin-bottom: 0;
+                padding: 0 20px;
+
+                &:first-of-type {
+                  height: 400px;
+                  overflow: hidden;
+                  margin-top: 50px;
+                }
+
+                &:nth-of-type(2) {
+                  height: 500px;
+                  overflow: hidden;
+                  margin-top: 100px;
+                }
+
+                &:last-of-type {
+                  height: 450px;
+                  overflow: hidden;
+                }
               }
             `}
           >
@@ -73,15 +102,29 @@ const About: React.FC = () => {
   );
 
   return (
-    <section>
-      <div>
-        <h2>About us</h2>
-        <p>
-          Nullam sodales rhoncus dignissim. Nulla ut congue quam, vel dapibus
-          nulla. Duis quis neque auctor, congue nunc sed, porttitor ante.
-        </p>
-      </div>
-      <div>{renderImages(images)}</div>
+    <section
+      css={css`
+        margin-bottom: 150px;
+      `}
+    >
+      <Container>
+        <div
+          css={css`
+            margin-bottom: 75px;
+          `}
+        >
+          <h2>About us</h2>
+          <p
+            css={css`
+              max-width: 550px;
+            `}
+          >
+            Nullam sodales rhoncus dignissim. Nulla ut congue quam, vel dapibus
+            nulla. Duis quis neque auctor, congue nunc sed, porttitor ante.
+          </p>
+        </div>
+        <div>{renderImages(images)}</div>
+      </Container>
     </section>
   );
 };
