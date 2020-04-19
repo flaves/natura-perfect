@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { useForm, FormContext } from 'react-hook-form';
 
@@ -7,6 +7,8 @@ import Contact from './contact';
 import Services from './services';
 import Description from './description';
 import Button from '../../../shared/button';
+
+import useInterval from '../../../../hooks/useInterval';
 
 export interface ContactFormData {
   contact: {
@@ -27,13 +29,39 @@ export interface ContactFormData {
 
 const Form: React.FC = () => {
   const methods = useForm<ContactFormData>();
+  const [isPreviousForm, setIsPreviousForm] = useState(false);
+
+  useInterval(() => {
+    if (methods.formState.dirty) {
+      const values = methods.getValues({ nest: true });
+      window.localStorage.setItem(`contactFormData`, JSON.stringify(values));
+    }
+  }, 10000);
+
+  useEffect(() => {
+    if (methods.formState.dirty) {
+      const contactFormData = window.localStorage.getItem(`contactFormData`);
+      if (contactFormData) setIsPreviousForm(true);
+    }
+  }, [methods.formState.dirty]);
 
   const onSubmit = useCallback(
     methods.handleSubmit((data) => {
       console.log(data);
+      methods.reset();
+      window.localStorage.removeItem(`contactFormData`);
     }),
     []
   );
+
+  const get = useCallback(() => {
+    const contactFormData = window.localStorage.getItem(`contactFormData`);
+    if (contactFormData) {
+      Object.entries(JSON.parse(contactFormData)).map(([key, value]) => {
+        methods.setValue(key, value);
+      });
+    }
+  }, [methods.setValue]);
 
   return (
     <FormContext {...methods}>
@@ -42,6 +70,7 @@ const Form: React.FC = () => {
           margin-bottom: 150px;
         `}
       >
+        {isPreviousForm && <button onClick={get}>get</button>}
         <form onSubmit={onSubmit}>
           <Container>
             <div
