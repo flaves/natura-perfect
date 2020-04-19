@@ -54,9 +54,9 @@ const Hero: React.FC = () => {
             font-size: 80px;
           `}
         >
-          Need a fresh garden?
+          Demandez votre
           <br />
-          Get a quote.
+          devis gratuit.
         </h1>
       </div>
       <div
