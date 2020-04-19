@@ -7,6 +7,7 @@ import { links } from './header';
 
 import { LinkType } from '../../types/link';
 import { ThemeType } from '../../styles/theme';
+import mq from '../../styles/mq';
 
 const Footer: React.FC = () => {
   const { color } = useTheme<ThemeType>();
@@ -16,19 +17,24 @@ const Footer: React.FC = () => {
       <ul
         css={css`
           margin-bottom: 50px;
+
+          ${mq(`md`)} {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
         `}
       >
         {links?.map((link, key) => (
           <li
             key={key}
             css={css`
-              margin-bottom: 10px;
-
-              &:last-of-type {
-                margin-bottom: 0;
+              ${mq(`md`)} {
+                padding: 0 50px;
               }
 
               a {
+                font-size: 14px;
                 font-weight: 500;
               }
             `}
@@ -51,6 +57,8 @@ const Footer: React.FC = () => {
       {renderLinks(links)}
       <div
         css={css`
+          font-size: 14px;
+          line-height: 1.5;
           margin-bottom: 50px;
         `}
       >

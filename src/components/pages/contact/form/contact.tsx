@@ -4,7 +4,6 @@ import { useTheme } from 'emotion-theming';
 import { ErrorMessage, useFormContext } from 'react-hook-form';
 
 import Input, { InputProps } from '../../../shared/input';
-import Container from '../../../styled/container';
 import Radio from '../../../shared/radio';
 
 import mq from '../../../../styles/mq';
@@ -97,7 +96,6 @@ const Contact: React.FC = () => {
           ${mq(`md`)} {
             display: flex;
             flex-wrap: wrap;
-            max-width: 900px;
             margin: 0 -2rem;
           }
         `}
@@ -215,17 +213,17 @@ const Contact: React.FC = () => {
   );
 
   return (
-    <Container>
+    <>
       <h2
         css={css`
           font-size: 30px;
           margin-bottom: 40px;
         `}
       >
-        Aidez-nous à vous connaître un peu mieux.
+        Aidez-nous à mieux vous connaître.
       </h2>
       {renderInputs(inputs)}
-    </Container>
+    </>
   );
 };
 

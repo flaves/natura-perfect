@@ -26,7 +26,7 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
           <li
             key={key}
             css={css`
-              padding: 0 50px;
+              padding: 0 30px;
 
               &:last-of-type {
                 margin-left: auto;

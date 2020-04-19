@@ -4,10 +4,10 @@ import { useTheme } from 'emotion-theming';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
-import Button from './button';
-import mq from '../../styles/mq';
-
+import Link from './link';
 import Container from '../styled/container';
+
+import mq from '../../styles/mq';
 
 import { ImageType } from '../../types/image';
 import { ThemeType } from '../../styles/theme';
@@ -85,7 +85,7 @@ const Contact: React.FC = () => {
               <br />
               Are you ready to become our partner?
             </h2>
-            <Button to="/contact">Contact us</Button>
+            <Link to="/contact">Contact us</Link>
           </div>
         </div>
       </Container>

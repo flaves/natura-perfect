@@ -25,6 +25,7 @@ const Radio: React.FC<RadioProps> = ({ label, validation, ...props }) => {
       {label && props.id && (
         <label
           htmlFor={props.id}
+          tabIndex={0}
           css={css`
             cursor: pointer;
             display: block;

@@ -6,19 +6,19 @@ import { LinkType } from '../../types/link';
 
 export const links: LinkType[] = [
   {
-    label: `Home`,
+    label: `Accueil`,
     path: `/`,
   },
   {
-    label: `Services`,
+    label: `Nos Services`,
     path: `/services`,
   },
   {
-    label: `About`,
+    label: `À propos de nous`,
     path: `/about`,
   },
   {
-    label: `Contact us`,
+    label: `Contactez-nous`,
     path: `/contact`,
   },
 ];
