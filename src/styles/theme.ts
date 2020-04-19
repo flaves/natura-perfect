@@ -33,7 +33,7 @@ const theme: ThemeType = {
     text: `hsl(0, 0%, 0%)`,
     success: `hsl(145, 63%, 50%)`,
     warning: `hsl(46, 100%, 60%)`,
-    error: `hsl(0, 100%, 70%)`,
+    error: `hsl(0, 100%, 30%)`,
     black: `hsl(0, 0%, 0%)`,
     white: `hsl(0, 0%, 100%)`,
   },

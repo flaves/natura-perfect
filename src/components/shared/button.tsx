@@ -1,9 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
 import { Link } from 'gatsby';
-
-import { ThemeType } from '../../styles/theme';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -12,8 +9,6 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ children, variant, to, ...props }) => {
-  const { color } = useTheme<ThemeType>();
-
   const renderVariant = () => {
     switch (variant) {
       case `black`:

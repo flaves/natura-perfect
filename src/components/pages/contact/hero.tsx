@@ -3,8 +3,9 @@ import { css } from '@emotion/core';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
-import { ImageType } from '../../../types/image';
 import mq from '../../../styles/mq';
+
+import { ImageType } from '../../../types/image';
 
 const query = graphql`
   {
@@ -34,6 +35,8 @@ const Hero: React.FC = () => {
   return (
     <section
       css={css`
+        margin-bottom: 100px;
+
         ${mq(`md`)} {
           display: flex;
           max-height: 500px;
