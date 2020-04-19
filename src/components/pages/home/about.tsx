@@ -26,7 +26,7 @@ const query = graphql`
               cropFocus: CENTER
               quality: 80
             ) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

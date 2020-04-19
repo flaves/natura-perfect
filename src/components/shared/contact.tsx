@@ -23,7 +23,7 @@ const query = graphql`
           fit: COVER
           quality: 80
         ) {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

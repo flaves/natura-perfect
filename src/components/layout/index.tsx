@@ -15,4 +15,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => (
   </section>
 );
 
-export default Layout;
+export default React.memo(Layout);
