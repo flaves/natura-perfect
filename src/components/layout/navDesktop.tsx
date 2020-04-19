@@ -26,7 +26,7 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
           <li
             key={key}
             css={css`
-              padding: 0 30px;
+              padding: 5px 30px 0 30px;
 
               &:last-of-type {
                 margin-left: auto;
@@ -61,16 +61,18 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
         padding: 0 100px;
       `}
     >
-      <span
+      <Link
+        to="/"
         css={css`
           color: ${color?.primary};
           font-family: Mixta, sans-serif;
           font-size: 30px;
           font-weight: 900;
+          margin-right: 20px;
         `}
       >
         Natura Perfect
-      </span>
+      </Link>
       {renderLinks(links)}
     </nav>
   );
