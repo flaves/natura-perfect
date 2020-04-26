@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { css } from '@emotion/core';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
@@ -6,6 +6,7 @@ import AliceCarousel from 'react-alice-carousel';
 
 import mq from '../../../styles/mq';
 
+import Container from '../../styled/container';
 import services from '../../../data/services.json';
 
 import ServiceEntity from '../../../types/service';
@@ -34,6 +35,7 @@ interface StaticQuery {
 }
 
 const Services: React.FC = () => {
+  const carousel = useRef(null);
   const { image } = useStaticQuery<StaticQuery>(query);
 
   const servicesWithImage: ServiceEntity[] = useMemo(
@@ -45,9 +47,12 @@ const Services: React.FC = () => {
     []
   );
 
+  console.log(carousel?.current);
+
   const renderServices = useCallback(
     () => (
       <AliceCarousel
+        ref={carousel}
         autoPlay
         autoPlayInterval={3000}
         responsive={{
@@ -143,24 +148,30 @@ const Services: React.FC = () => {
         overflow: hidden;
       `}
     >
-      <div
-        css={css`
-          text-align: center;
-          margin-bottom: 100px;
-        `}
-      >
-        <h2>Services</h2>
-        <p
+      <Container>
+        <div
           css={css`
-            max-width: 550px;
-            margin: auto;
+            margin-bottom: 100px;
+
+            ${mq(`md`)} {
+              text-align: center;
+            }
           `}
         >
-          Vous disposez d’un budget serré ou vous rêvez de grands projets ?{' '}
-          <br />
-          Notre large gamme de services est entièrement personnalisable.
-        </p>
-      </div>
+          <h2>Services</h2>
+          <p
+            css={css`
+              ${mq(`md`)} {
+                margin: auto;
+                max-width: 490px;
+              }
+            `}
+          >
+            Vous disposez d’un budget serré ou vous rêvez de grands projets ?{' '}
+            Notre large gamme de services est entièrement personnalisable.
+          </p>
+        </div>
+      </Container>
       <div
         css={css`
           ${mq(`lg`)} {
