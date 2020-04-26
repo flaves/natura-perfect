@@ -104,10 +104,10 @@ const Presentation: React.FC = () => {
                 max-width: 650px;
               `}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse vel turpis nec nisi rhoncus sagittis. Maecenas egestas
-              convallis ligula, non tincidunt diam dapibus et. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit.
+              La création d’espaces verts et l’entretien des plantes me
+              passionnent. Le sourire des clients lorsque le travail est
+              effectué avec succès. Tous les jardins méritent d’être entretenus
+              et embellis.
             </p>
           </div>
         </div>
