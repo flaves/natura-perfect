@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Haies & Arbustes",
+    "description": "Une haie bien taillée, des massifs entretenus et des arbustes sélectionnés selon le type de sol, l’exposition, et la période de floraison sont des éléments non négligeables pour décorer votre jardin avec goût et vous isoler des regards indiscrets."
+  },
+  {
+    "name": "Pelouse",
+    "description": "Une pelouse unie, bien tondue et des bordures découpées avec précision feront toute la différence!"
+  },
+  {
+    "name": "Parterres",
+    "description": "De jolis parterres parsemés de fleurs et d’arbustes, nettoyés des mauvaises herbes habilleront votre pelouse et votre façade de la meilleure des manières."
+  },
+  {
+    "name": "Allées",
+    "description": "Les allées, qu’elles soient en klinkers, en pavés ou en gravier ont tendance à verdirent, et au fil du temps à laisser s’introduire les mauvaises herbes dans les joints. Il est peu être temps de passer au grand nettoyage et au traitement des mauvaises herbes par des produits respectueux de l’environnement."
+  },
+  {
+    "name": "Potager",
+    "description": "Vous avez toujours rêvé d’avoir un petit potager dans votre jardin et de produire vos propres légumes mais le labour, l’entretien ou des essais infructueux vous ont découragé ? C’est compréhensible! Laissez nous vous aider."
+  },
+  {
+    "name": "Maison",
+    "description": "Tout comme les allées, les façades ont tendance a se verdire et perdre de leur éclat. De temps à autre, il est donc important d’opérer un nettoyage et si nécéssaire un rafraîchissement de la peinture qui peut s’écailler ou devenir vieillotte. De même, les boiseries méritent avec le temps un ponçage et un traitement adéquat avant qu’il ne soit trop tard. Les gouttières quant à elles doivent être nettoyées plus ou moins souvent selon la végétation autour de la maison, cela empêchera d’éventuels bouchons dans les descentes de gouttières et le remplacement intégral de celles-ci en cas de « laisser-aller » trop important."
+  },
+  {
+    "name": "Déchets",
+    "description": "Pour celles et ceux qui ont envie de créer un compost efficace et utile pour la nature, il est bien entendu possible de nous demander de l’aide et des conseils avisés mais si vous n’avez pas la place ou tout simplement pas l’envie d’un compost au fond de votre jardin, nous réalisons l’enlèvement des déchets."
+  }
+]
