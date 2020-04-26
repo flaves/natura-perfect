@@ -88,4 +88,4 @@ const SEO: React.FC<SEOProps> = ({
   );
 };
 
-export default SEO;
+export default React.memo(SEO);
