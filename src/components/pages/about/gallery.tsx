@@ -105,8 +105,11 @@ const Gallery: React.FC = () => {
           <Img
             fluid={leftOne?.childImageSharp?.fluid}
             css={css`
-              margin-bottom: 20px;
               height: 250px;
+
+              ${mq(`md`)} {
+                margin-bottom: 20px;
+              }
             `}
           />
           <Img

@@ -75,7 +75,7 @@ const Contact: React.FC = () => {
               }
             `}
           >
-            {`Besoin d'aide pour votre projet ?`}
+            {`Un projet dans la tête ?`}
             <br />
             {`Recevez une offre gratuitement.`}
           </h2>
@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
               }
             `}
           >
-            <Link to="/contact">Contact us</Link>
+            <Link to="/contact">Contactez-nous</Link>
           </div>
           <div
             css={css`

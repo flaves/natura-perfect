@@ -12,6 +12,58 @@ const query = graphql`
     hero: file(name: { eq: "hero" }, relativeDirectory: { eq: "services" }) {
       childImageSharp {
         fluid(
+          maxWidth: 500
+          maxHeight: 450
+          cropFocus: CENTER
+          fit: COVER
+          quality: 80
+        ) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    heroSM: file(name: { eq: "hero" }, relativeDirectory: { eq: "services" }) {
+      childImageSharp {
+        fluid(
+          maxWidth: 600
+          maxHeight: 450
+          cropFocus: CENTER
+          fit: COVER
+          quality: 80
+        ) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    heroMD: file(name: { eq: "hero" }, relativeDirectory: { eq: "services" }) {
+      childImageSharp {
+        fluid(
+          maxWidth: 800
+          maxHeight: 450
+          cropFocus: CENTER
+          fit: COVER
+          quality: 80
+        ) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    heroLG: file(name: { eq: "hero" }, relativeDirectory: { eq: "services" }) {
+      childImageSharp {
+        fluid(
+          maxWidth: 1000
+          maxHeight: 450
+          cropFocus: CENTER
+          fit: COVER
+          quality: 80
+        ) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    heroXL: file(name: { eq: "hero" }, relativeDirectory: { eq: "services" }) {
+      childImageSharp {
+        fluid(
           maxWidth: 1440
           maxHeight: 450
           cropFocus: CENTER
@@ -27,10 +79,36 @@ const query = graphql`
 
 interface StaticQuery {
   hero: ImageType;
+  heroSM: ImageType;
+  heroMD: ImageType;
+  heroLG: ImageType;
+  heroXL: ImageType;
 }
 
 const Hero: React.FC = () => {
-  const { hero } = useStaticQuery<StaticQuery>(query);
+  const { hero, heroSM, heroMD, heroLG, heroXL } = useStaticQuery<StaticQuery>(
+    query
+  );
+
+  const sources = [
+    hero.childImageSharp.fluid,
+    {
+      ...heroXL.childImageSharp.fluid,
+      media: `(min-width: 1200px)`,
+    },
+    {
+      ...heroLG.childImageSharp.fluid,
+      media: `(min-width: 992px)`,
+    },
+    {
+      ...heroMD.childImageSharp.fluid,
+      media: `(min-width: 768px)`,
+    },
+    {
+      ...heroSM.childImageSharp.fluid,
+      media: `(min-width: 576px)`,
+    },
+  ];
 
   return (
     <section
@@ -59,14 +137,14 @@ const Hero: React.FC = () => {
           }
         `}
       >
-        Services that match
+        Des services adaptés
         <br />
         <span
           css={css`
             color: white;
           `}
         >
-          your needs.
+          à vos besoins.
         </span>
       </h1>
       <div
@@ -85,7 +163,7 @@ const Hero: React.FC = () => {
         `}
       >
         <Img
-          fluid={hero?.childImageSharp?.fluid}
+          fluid={sources}
           css={css`
             position: initial !important;
             max-width: 768px;
