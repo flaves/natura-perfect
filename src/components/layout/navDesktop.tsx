@@ -13,6 +13,7 @@ interface NavDesktopProps {
 
 const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
   const { color } = useTheme<ThemeType>();
+
   const renderLinks = useCallback(
     (links: LinkType[]) => (
       <ul
@@ -33,6 +34,32 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
             css={css`
               padding: 5px 30px 0 30px;
 
+              & > a {
+                color: ${color.primary};
+                position: relative;
+
+                &:hover {
+                  color: hsl(164, 19%, 15%);
+                }
+
+                &.active {
+                  &::after {
+                    content: '';
+                  }
+                }
+
+                &::after {
+                  position: absolute;
+                  width: 6px;
+                  height: 6px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  bottom: -12px;
+                  border-radius: 50%;
+                  background-color: ${color.primary};
+                }
+              }
+
               &:last-of-type {
                 margin-left: auto;
 
@@ -41,6 +68,7 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
                   font-family: Mixta, sans-serif;
                   font-size: 20px;
                   font-weight: 900;
+                  position: relative;
 
                   ${mq(`lg`)} {
                     font-size: 24px;
@@ -57,7 +85,9 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
               }
             `}
           >
-            <Link to={link?.path}>{link?.label}</Link>
+            <Link to={link?.path} activeClassName="active">
+              {link?.label}
+            </Link>
           </li>
         ))}
       </ul>
