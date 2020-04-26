@@ -1,8 +1,10 @@
 import React from 'react';
+import { css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
 
+import mq from '../../../../styles/mq';
+
 import { ThemeType } from '../../../../styles/theme';
-import { css } from '@emotion/core';
 
 const Join: React.FC = () => {
   const { color } = useTheme<ThemeType>();
@@ -16,17 +18,29 @@ const Join: React.FC = () => {
 
         p {
           color: white;
-          font-size: 20px;
+          font-size: 16px;
           font-weight: 400;
           line-height: 2;
+
+          ${mq(`md`)} {
+            font-size: 20px;
+          }
         }
       `}
     >
       <h2
         css={css`
           color: white;
-          font-size: 40px;
+          font-size: 20px;
           margin-bottom: 75px;
+
+          ${mq(`sm`)} {
+            font-size: 30px;
+          }
+
+          ${mq(`md`)} {
+            font-size: 40px;
+          }
         `}
       >
         Vous pouvez aussi nous joindre via

@@ -102,11 +102,14 @@ const Contact: React.FC = () => {
       >
         <li
           css={css`
-            flex: 0 0 100%;
-            max-width: 100%;
-            padding: 0 2rem;
             margin-bottom: 20px;
             height: 52px;
+
+            ${mq(`md`)} {
+              flex: 0 0 100%;
+              max-width: 100%;
+              padding: 0 2rem;
+            }
           `}
         >
           <div
