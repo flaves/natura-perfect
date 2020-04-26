@@ -39,6 +39,7 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
 
               & > a {
                 color: ${color.primary};
+                font-weight: 500;
                 position: relative;
 
                 &:hover {
@@ -81,10 +82,6 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
                     font-size: 30px;
                   }
                 }
-              }
-
-              a {
-                font-weight: 600;
               }
             `}
           >
