@@ -20,7 +20,7 @@ const query = graphql`
           childImageSharp {
             id
             fluid(
-              maxWidth: 400
+              maxWidth: 450
               maxHeight: 500
               fit: COVER
               cropFocus: CENTER
