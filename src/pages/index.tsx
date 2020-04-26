@@ -7,9 +7,11 @@ import Hero from '../components/pages/home/hero';
 import About from '../components/pages/home/about';
 import Services from '../components/pages/home/services';
 import Contact from '../components/shared/contact';
+// import Loader from '../components/shared/loader';
 
 const Home: React.FC = () => (
   <Layout>
+    {/*<Loader />*/}
     <SEO title="Home" />
     <Hero />
     <About />
