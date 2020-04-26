@@ -93,20 +93,20 @@ const Hero: React.FC = () => {
   const sources = [
     hero.childImageSharp.fluid,
     {
-      ...heroSM.childImageSharp.fluid,
-      media: `(min-width: 576px)`,
-    },
-    {
-      ...heroMD.childImageSharp.fluid,
-      media: `(min-width: 768px)`,
+      ...heroXL.childImageSharp.fluid,
+      media: `(min-width: 1200px)`,
     },
     {
       ...heroLG.childImageSharp.fluid,
       media: `(min-width: 992px)`,
     },
     {
-      ...heroXL.childImageSharp.fluid,
-      media: `(min-width: 1200px)`,
+      ...heroMD.childImageSharp.fluid,
+      media: `(min-width: 768px)`,
+    },
+    {
+      ...heroSM.childImageSharp.fluid,
+      media: `(min-width: 576px)`,
     },
   ];
 
