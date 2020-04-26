@@ -52,13 +52,13 @@ const Gallery: React.FC<GalleryProps> = ({
   const renderImages = useCallback(
     () => (
       <AliceCarousel
-        autoPlay
+        // autoPlay
         autoPlayInterval={3000}
         responsive={{
           0: {
             items: 1,
           },
-          768: {
+          576: {
             items: 2,
           },
           992: {
@@ -82,8 +82,11 @@ const Gallery: React.FC<GalleryProps> = ({
             <Img
               fluid={image?.childImageSharp?.fluid}
               css={css`
-                width: 350px;
                 height: 350px;
+
+                ${mq(`sm`)} {
+                  width: 350px;
+                }
               `}
             />
           </div>
