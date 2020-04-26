@@ -2,11 +2,13 @@ import React, { useCallback, useMemo } from 'react';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
+import AliceCarousel from 'react-alice-carousel';
 
 import services from '../../../data/services.json';
 import ServiceEntity from '../../../types/service';
 import { graphql, useStaticQuery } from 'gatsby';
 import { ImageType } from '../../../types/image';
+import mq from '../../../styles/mq';
 
 const query = graphql`
   {
@@ -44,20 +46,31 @@ const Services: React.FC = () => {
 
   const renderServices = useCallback(
     () => (
-      <ul
-        css={css`
-          display: flex;
-          justify-content: center;
-          margin: 0 -1rem;
-          overflow: hidden;
-        `}
+      <AliceCarousel
+        autoPlay
+        autoPlayInterval={3000}
+        responsive={{
+          0: {
+            items: 1,
+          },
+          768: {
+            items: 2,
+          },
+          992: {
+            items: 4,
+          },
+          1200: {
+            items: 5,
+          },
+        }}
+        buttonsDisabled
+        dotsDisabled
       >
         {servicesWithImage?.map((service, key) => (
-          <li
+          <div
             key={key}
             css={css`
-              flex: 0 0 24%;
-              padding: 0 1rem;
+              margin: 0 20px;
             `}
           >
             <Link to="/services">
@@ -106,6 +119,7 @@ const Services: React.FC = () => {
                     h3 {
                       color: white;
                       font-size: 40px;
+                      text-align: center;
                     }
                   `}
                 >
@@ -114,9 +128,9 @@ const Services: React.FC = () => {
                 <Img fluid={service?.image?.childImageSharp?.fluid} />
               </article>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </AliceCarousel>
     ),
     []
   );
@@ -125,6 +139,7 @@ const Services: React.FC = () => {
     <section
       css={css`
         margin-bottom: 150px;
+        overflow: hidden;
       `}
     >
       <div
@@ -144,7 +159,15 @@ const Services: React.FC = () => {
           nulla. Duis quis neque auctor, congue nunc sed, porttitor ante.
         </p>
       </div>
-      {renderServices()}
+      <div
+        css={css`
+          ${mq(`lg`)} {
+            margin: 0 -100px;
+          }
+        `}
+      >
+        {renderServices()}
+      </div>
     </section>
   );
 };
