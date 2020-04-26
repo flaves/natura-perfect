@@ -2,7 +2,11 @@ import { css } from '@emotion/core';
 
 import { GilroyFont, MixtaFont } from '../fonts/fonts';
 
+import marks from './marks';
+
 const reset = css`
+  ${process.env.NODE_ENV === `development` && marks}
+
   ${GilroyFont}
   ${MixtaFont}
   
