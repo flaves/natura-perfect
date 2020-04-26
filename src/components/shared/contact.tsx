@@ -17,8 +17,8 @@ const query = graphql`
     contact: file(name: { eq: "contact" }) {
       childImageSharp {
         fluid(
-          maxWidth: 900
-          maxHeight: 1100
+          maxWidth: 600
+          maxHeight: 550
           cropFocus: CENTER
           fit: COVER
           quality: 80

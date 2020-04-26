@@ -88,7 +88,25 @@ const NavMobile: React.FC<NavMobileProps> = ({ active = false, links }) => {
         }
       `}
     >
-      {renderLinks()}
+      <div
+        css={css`
+          margin-bottom: 100px;
+        `}
+      >
+        {renderLinks()}
+      </div>
+      <div
+        css={css`
+          color: hsl(164, 19%, 10%);
+          font-family: Mixta, sans-serif;
+          font-size: 24px;
+          line-height: 2;
+        `}
+      >
+        +32 499 62 95 59
+        <br />
+        hello@natura-perfect.be
+      </div>
     </a.nav>
   );
 };

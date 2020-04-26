@@ -7,7 +7,7 @@ import { ResizeObserver as polyfill } from '@juggle/resize-observer/lib/ResizeOb
 import useMeasure from 'react-use-measure';
 import AliceCarousel from 'react-alice-carousel';
 
-import Close from '../../svg/close.svg';
+import Close from '../../../svg/close.svg';
 
 import mq from '../../../styles/mq';
 
@@ -17,10 +17,16 @@ import { ThemeType } from '../../../styles/theme';
 interface GalleryProps {
   active: boolean;
   images: ImageType[];
+  name: string;
   setCurrent: (S: number | undefined) => void;
 }
 
-const Gallery: React.FC<GalleryProps> = ({ active, images, setCurrent }) => {
+const Gallery: React.FC<GalleryProps> = ({
+  active,
+  images,
+  name,
+  setCurrent,
+}) => {
   const section = useRef<HTMLElement>(null);
   const [ref, { height }] = useMeasure({ polyfill });
   const collapse = useSpring({
@@ -108,10 +114,20 @@ const Gallery: React.FC<GalleryProps> = ({ active, images, setCurrent }) => {
       <div ref={ref}>
         <div
           css={css`
-            padding: 150px 0;
+            padding: 50px 0 150px 0;
             position: relative;
           `}
         >
+          <h3
+            css={css`
+              color: hsl(164, 19%, 15%);
+              font-size: 50px;
+              margin-bottom: 50px;
+              text-align: center;
+            `}
+          >
+            {name}
+          </h3>
           <div
             css={css`
               ${mq(`lg`)} {
