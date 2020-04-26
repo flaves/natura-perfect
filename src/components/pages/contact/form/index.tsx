@@ -70,9 +70,18 @@ const Form: React.FC = () => {
           margin-bottom: 150px;
         `}
       >
-        {isPreviousForm && <button onClick={get}>get</button>}
-        <form onSubmit={onSubmit}>
-          <Container>
+        <Container>
+          {isPreviousForm && (
+            <h3
+              onClick={get}
+              css={css`
+                display: none;
+              `}
+            >
+              Cliquez-ici pour reprendre où vous vous étiez arreté.
+            </h3>
+          )}
+          <form onSubmit={onSubmit}>
             <div
               css={css`
                 max-width: 800px;
@@ -86,8 +95,8 @@ const Form: React.FC = () => {
                 Envoyez votre demande
               </Button>
             </div>
-          </Container>
-        </form>
+          </form>
+        </Container>
       </section>
     </FormContext>
   );
