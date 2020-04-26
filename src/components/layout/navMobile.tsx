@@ -47,11 +47,15 @@ const NavMobile: React.FC<NavMobileProps> = ({ active = false, links }) => {
                   font-family: Mixta, sans-serif;
                   font-size: 28px;
                   font-weight: 700;
+                  transition: color 0.3s;
 
                   ${mq(`sm`)} {
                     font-size: 36px;
                   }
                 `}
+                activeStyle={{
+                  color: `hsl(164, 19%, 15%)`,
+                }}
               >
                 {link?.label}
               </Link>
