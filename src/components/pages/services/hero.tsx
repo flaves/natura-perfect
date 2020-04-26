@@ -137,14 +137,14 @@ const Hero: React.FC = () => {
           }
         `}
       >
-        Services that match
+        Des services adaptés
         <br />
         <span
           css={css`
             color: white;
           `}
         >
-          your needs.
+          à vos besoins.
         </span>
       </h1>
       <div

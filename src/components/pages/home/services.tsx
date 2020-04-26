@@ -156,8 +156,9 @@ const Services: React.FC = () => {
             margin: auto;
           `}
         >
-          Nullam sodales rhoncus dignissim. Nulla ut congue quam, vel dapibus
-          nulla. Duis quis neque auctor, congue nunc sed, porttitor ante.
+          Vous disposez d’un budget serré ou vous rêvez de grands projets ?{' '}
+          <br />
+          Notre large gamme de services est entièrement personnalisable.
         </p>
       </div>
       <div

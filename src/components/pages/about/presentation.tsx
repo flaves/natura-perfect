@@ -53,9 +53,9 @@ const Presentation: React.FC = () => {
               }
             `}
           >
-            You are at the
+            Un partenaire
             <br />
-            right place.
+            unique.
           </h2>
         </div>
         <div

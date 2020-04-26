@@ -113,14 +113,15 @@ const About: React.FC = () => {
             margin-bottom: 75px;
           `}
         >
-          <h2>About us</h2>
+          <h2>À propos</h2>
           <p
             css={css`
               max-width: 550px;
             `}
           >
-            Nullam sodales rhoncus dignissim. Nulla ut congue quam, vel dapibus
-            nulla. Duis quis neque auctor, congue nunc sed, porttitor ante.
+            Quelles que soient vos envies, nous sommes à l’écoute de vos besoins
+            <br />
+            pour vous proposer des solutions à la hauteur de vos attentes.
           </p>
         </div>
         <div>{renderImages(images)}</div>

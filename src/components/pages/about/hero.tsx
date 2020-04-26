@@ -23,9 +23,9 @@ const Hero: React.FC = () => {
             }
           `}
         >
-          Experience you
+          Une relation
           <br />
-          can trust.
+          de confiance.
         </h1>
       </Container>
     </section>
