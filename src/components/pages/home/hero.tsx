@@ -32,7 +32,7 @@ const Title: React.FC = () => (
     css={css`
       font-size: 40px;
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
 
       ${mq(`sm`)} {
         font-size: 60px;

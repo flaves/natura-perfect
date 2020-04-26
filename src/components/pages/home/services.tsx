@@ -47,14 +47,16 @@ const Services: React.FC = () => {
       <ul
         css={css`
           display: flex;
+          justify-content: center;
           margin: 0 -1rem;
           overflow: hidden;
         `}
       >
-        {servicesWithImage?.map((service) => (
+        {servicesWithImage?.map((service, key) => (
           <li
+            key={key}
             css={css`
-              flex: 0 0 25%;
+              flex: 0 0 24%;
               padding: 0 1rem;
             `}
           >
