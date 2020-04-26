@@ -14,16 +14,20 @@ import { ImageType } from '../../../types/image';
 
 const query = graphql`
   {
-    image: file(name: { eq: "hero" }, relativeDirectory: { eq: "contact" }) {
-      childImageSharp {
-        fluid(
-          maxWidth: 400
-          maxHeight: 500
-          fit: COVER
-          cropFocus: CENTER
-          quality: 80
-        ) {
-          ...GatsbyImageSharpFluid_withWebp
+    allFile(filter: { relativeDirectory: { eq: "home/services" } }) {
+      edges {
+        node {
+          childImageSharp {
+            fluid(
+              maxWidth: 300
+              maxHeight: 400
+              fit: COVER
+              cropFocus: CENTER
+              quality: 80
+            ) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
       }
     }
@@ -31,18 +35,24 @@ const query = graphql`
 `;
 
 interface StaticQuery {
-  image: ImageType;
+  allFile: {
+    edges: {
+      node: ImageType;
+    }[];
+  };
 }
 
 const Services: React.FC = () => {
   const carousel = useRef(null);
-  const { image } = useStaticQuery<StaticQuery>(query);
+  const { allFile } = useStaticQuery<StaticQuery>(query);
+
+  const images = useMemo(() => allFile?.edges?.map((item) => item?.node), []);
 
   const servicesWithImage: ServiceEntity[] = useMemo(
     () =>
-      services?.map((service: ServiceEntity) => ({
+      services?.map((service: ServiceEntity, key: number) => ({
         ...service,
-        image,
+        image: images[key],
       })),
     []
   );
