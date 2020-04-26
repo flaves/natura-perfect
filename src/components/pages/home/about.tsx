@@ -116,11 +116,12 @@ const About: React.FC = () => {
           <h2>À propos</h2>
           <p
             css={css`
-              max-width: 550px;
+              ${mq(`md`)} {
+                max-width: 510px;
+              }
             `}
           >
             Quelles que soient vos envies, nous sommes à l’écoute de vos besoins
-            <br />
             pour vous proposer des solutions à la hauteur de vos attentes.
           </p>
         </div>

@@ -16,16 +16,20 @@ const isEven = (n: number) => n % 2 === 0;
 
 const query = graphql`
   {
-    image: file(name: { eq: "hero" }, relativeDirectory: { eq: "contact" }) {
-      childImageSharp {
-        fluid(
-          maxWidth: 400
-          maxHeight: 500
-          fit: COVER
-          cropFocus: CENTER
-          quality: 80
-        ) {
-          ...GatsbyImageSharpFluid_withWebp
+    allFile(filter: { relativeDirectory: { eq: "home/services" } }) {
+      edges {
+        node {
+          childImageSharp {
+            fluid(
+              maxWidth: 400
+              maxHeight: 550
+              fit: COVER
+              cropFocus: CENTER
+              quality: 80
+            ) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
       }
     }
@@ -33,19 +37,25 @@ const query = graphql`
 `;
 
 interface StaticQuery {
-  image: ImageType;
+  allFile: {
+    edges: {
+      node: ImageType;
+    }[];
+  };
 }
 
 const List: React.FC = () => {
   const [current, setCurrent] = useState<number | undefined>();
-  const { image } = useStaticQuery<StaticQuery>(query);
+  const { allFile } = useStaticQuery<StaticQuery>(query);
+
+  const images = useMemo(() => allFile?.edges?.map((item) => item?.node), []);
 
   const servicesWithImage: ServiceEntity[] = useMemo(
     () =>
-      services?.map((service: ServiceEntity) => ({
+      services?.map((service: ServiceEntity, key: number) => ({
         ...service,
-        image,
-        images: [image, image, image, image, image],
+        image: images[key],
+        images,
       })),
     []
   );
@@ -112,7 +122,7 @@ const List: React.FC = () => {
                   }
                 `}
               >
-                <Img fluid={image?.childImageSharp?.fluid} />
+                <Img fluid={service?.image?.childImageSharp?.fluid} />
               </div>
               <div
                 css={css`

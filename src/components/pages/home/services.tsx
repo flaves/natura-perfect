@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { css } from '@emotion/core';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
@@ -6,6 +6,7 @@ import AliceCarousel from 'react-alice-carousel';
 
 import mq from '../../../styles/mq';
 
+import Container from '../../styled/container';
 import services from '../../../data/services.json';
 
 import ServiceEntity from '../../../types/service';
@@ -13,16 +14,20 @@ import { ImageType } from '../../../types/image';
 
 const query = graphql`
   {
-    image: file(name: { eq: "hero" }, relativeDirectory: { eq: "contact" }) {
-      childImageSharp {
-        fluid(
-          maxWidth: 400
-          maxHeight: 500
-          fit: COVER
-          cropFocus: CENTER
-          quality: 80
-        ) {
-          ...GatsbyImageSharpFluid_withWebp
+    allFile(filter: { relativeDirectory: { eq: "home/services" } }) {
+      edges {
+        node {
+          childImageSharp {
+            fluid(
+              maxWidth: 300
+              maxHeight: 400
+              fit: COVER
+              cropFocus: CENTER
+              quality: 80
+            ) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
       }
     }
@@ -30,24 +35,34 @@ const query = graphql`
 `;
 
 interface StaticQuery {
-  image: ImageType;
+  allFile: {
+    edges: {
+      node: ImageType;
+    }[];
+  };
 }
 
 const Services: React.FC = () => {
-  const { image } = useStaticQuery<StaticQuery>(query);
+  const carousel = useRef(null);
+  const { allFile } = useStaticQuery<StaticQuery>(query);
+
+  const images = useMemo(() => allFile?.edges?.map((item) => item?.node), []);
 
   const servicesWithImage: ServiceEntity[] = useMemo(
     () =>
-      services?.map((service: ServiceEntity) => ({
+      services?.map((service: ServiceEntity, key: number) => ({
         ...service,
-        image,
+        image: images[key],
       })),
     []
   );
 
+  console.log(carousel?.current);
+
   const renderServices = useCallback(
     () => (
       <AliceCarousel
+        ref={carousel}
         autoPlay
         autoPlayInterval={3000}
         responsive={{
@@ -143,24 +158,30 @@ const Services: React.FC = () => {
         overflow: hidden;
       `}
     >
-      <div
-        css={css`
-          text-align: center;
-          margin-bottom: 100px;
-        `}
-      >
-        <h2>Services</h2>
-        <p
+      <Container>
+        <div
           css={css`
-            max-width: 550px;
-            margin: auto;
+            margin-bottom: 100px;
+
+            ${mq(`md`)} {
+              text-align: center;
+            }
           `}
         >
-          Vous disposez d’un budget serré ou vous rêvez de grands projets ?{' '}
-          <br />
-          Notre large gamme de services est entièrement personnalisable.
-        </p>
-      </div>
+          <h2>Services</h2>
+          <p
+            css={css`
+              ${mq(`md`)} {
+                margin: auto;
+                max-width: 490px;
+              }
+            `}
+          >
+            Vous disposez d’un budget serré ou vous rêvez de grands projets ?{' '}
+            Notre large gamme de services est entièrement personnalisable.
+          </p>
+        </div>
+      </Container>
       <div
         css={css`
           ${mq(`lg`)} {
