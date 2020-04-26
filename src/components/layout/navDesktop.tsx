@@ -3,9 +3,12 @@ import { css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
 import { Link } from 'gatsby';
 
+import Logo from '../svg/logo.svg';
+
+import mq from '../../styles/mq';
+
 import { LinkType } from '../../types/link';
 import { ThemeType } from '../../styles/theme';
-import mq from '../../styles/mq';
 
 interface NavDesktopProps {
   links: LinkType[];
@@ -116,22 +119,19 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
       <Link
         to="/"
         css={css`
-          color: ${color?.primary};
-          font-family: Mixta, sans-serif;
-          font-size: 20px;
-          font-weight: 900;
+          padding-top: 10px;
 
-          ${mq(`lg`)} {
-            font-size: 24px;
-            margin-right: 20px;
+          svg {
+            width: 50px;
+            height: auto;
           }
 
-          ${mq(`xl`)} {
-            font-size: 30px;
+          ${mq(`lg`)} {
+            margin-right: 20px;
           }
         `}
       >
-        Natura Perfect
+        <Logo />
       </Link>
       {renderLinks(links)}
     </nav>

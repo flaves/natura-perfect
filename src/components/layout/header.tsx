@@ -49,6 +49,7 @@ const Header: React.FC = () => {
           align-items: center;
           font-size: 14px;
           box-shadow: 0 0 10px hsl(164, 19%, 15%, 0.5);
+          cursor: pointer;
 
           ${mq(`lg`)} {
             display: none;
