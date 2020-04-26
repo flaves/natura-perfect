@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
 import { Link } from 'gatsby';
 
-import Logo from '../svg/logo.svg';
+import Logo from '../../svg/logo.svg';
 
 import mq from '../../styles/mq';
 

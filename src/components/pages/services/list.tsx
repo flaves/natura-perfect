@@ -164,6 +164,7 @@ const List: React.FC = () => {
             <Gallery
               active={current === key}
               images={service?.images}
+              name={service?.name}
               setCurrent={setCurrent}
             />
           </li>

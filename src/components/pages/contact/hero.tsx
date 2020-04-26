@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 
 import mq from '../../../styles/mq';
 
-import DownArrow from '../../svg/down-arrow.svg';
+import DownArrow from '../../../svg/down-arrow.svg';
 
 import { ImageType } from '../../../types/image';
 

@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form';
 import mq from '../../../../styles/mq';
 import getValidation from '../../../../helpers/getValidation';
 
-import Check from '../../../svg/check.svg';
+import Check from '../../../../svg/check.svg';
 
 import { ContactFormData } from './index';
 
