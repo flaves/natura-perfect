@@ -14,8 +14,8 @@ const query = graphql`
     hero: file(name: { eq: "hero" }, relativeDirectory: { eq: "home" }) {
       childImageSharp {
         fluid(
-          maxWidth: 1000
-          maxHeight: 1000
+          maxWidth: 1440
+          maxHeight: 650
           cropFocus: CENTER
           fit: COVER
           quality: 80
