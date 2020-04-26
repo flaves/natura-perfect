@@ -3,6 +3,8 @@ import { css } from '@emotion/core';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
+import Link from '../../shared/link';
+
 import mq from '../../../styles/mq';
 
 import { ImageType } from '../../../types/image';
@@ -12,8 +14,8 @@ const query = graphql`
     hero: file(name: { eq: "hero" }, relativeDirectory: { eq: "home" }) {
       childImageSharp {
         fluid(
-          maxWidth: 968
-          maxHeight: 650
+          maxWidth: 1000
+          maxHeight: 1000
           cropFocus: CENTER
           fit: COVER
           quality: 80
@@ -25,6 +27,56 @@ const query = graphql`
   }
 `;
 
+const Title: React.FC = () => (
+  <h1
+    css={css`
+      font-size: 40px;
+      text-align: center;
+      margin-bottom: 50px;
+
+      ${mq(`sm`)} {
+        font-size: 60px;
+      }
+
+      ${mq(`md`)} {
+        font-size: 80px;
+      }
+
+      ${mq(`lg`)} {
+        text-align: left;
+        font-size: 150px;
+        position: relative;
+        z-index: 2;
+        letter-spacing: 2px;
+      }
+
+      & > span {
+        display: block;
+
+        & > span {
+          ${mq(`lg`)} {
+            color: white;
+          }
+        }
+      }
+    `}
+  >
+    <span>
+      Natur<span>a</span>
+    </span>
+    <span
+      css={css`
+        ${mq(`lg`)} {
+          position: relative;
+          left: 33px;
+        }
+      `}
+    >
+      Perfe<span>ct</span>
+    </span>
+  </h1>
+);
+
 interface StaticQueryType {
   hero: ImageType;
 }
@@ -35,46 +87,70 @@ const Hero: React.FC = () => {
   return (
     <section
       css={css`
-        margin-bottom: 150px;
+        margin-bottom: 100px;
+        overflow: hidden;
 
-        ${mq(`md`)} {
-          display: flex;
+        ${mq(`lg`)} {
+          margin-bottom: 0;
+          height: 800px;
+          padding-left: 50px;
+        }
+
+        ${mq(`xl`)} {
+          padding-left: 100px;
         }
       `}
     >
       <div
         css={css`
-          ${mq(`md`)} {
-            flex: 0 0 30%;
-            max-width: 30%;
+          ${mq(`lg`)} {
+            position: relative;
+            padding-top: 30px;
           }
         `}
       >
-        <h1
+        <Title />
+        <div
           css={css`
-            font-size: 75px;
             text-align: center;
+            margin-bottom: 50px;
 
-            ${mq(`md`)} {
-              font-size: 150px;
+            ${mq(`lg`)} {
               text-align: left;
+              padding-top: 40px;
+              padding-left: 100px;
             }
           `}
         >
-          Natura
-          <br />
-          Perfect
-        </h1>
-      </div>
-      <div
-        css={css`
-          ${mq(`md`)} {
-            flex: 0 0 70%;
-            max-width: 70%;
-          }
-        `}
-      >
-        <Img fluid={hero?.childImageSharp?.fluid} />
+          <Link to="/contact" variant="black">
+            Devis gratuit
+          </Link>
+        </div>
+        <div
+          css={css`
+            ${mq(`lg`)} {
+              position: absolute;
+              height: 650px;
+              width: 100%;
+              left: 377px;
+              top: 0;
+            }
+          `}
+        >
+          <Img
+            fluid={hero?.childImageSharp?.fluid}
+            css={css`
+              // max-width: 768px;
+              // margin: 0 auto;
+
+              ${mq(`lg`)} {
+                position: initial !important;
+                max-width: initial;
+                margin: initial;
+              }
+            `}
+          />
+        </div>
       </div>
     </section>
   );
