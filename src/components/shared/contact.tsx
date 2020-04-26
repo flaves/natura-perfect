@@ -17,8 +17,8 @@ const query = graphql`
     contact: file(name: { eq: "contact" }) {
       childImageSharp {
         fluid(
-          maxWidth: 450
-          maxHeight: 550
+          maxWidth: 900
+          maxHeight: 1100
           cropFocus: CENTER
           fit: COVER
           quality: 80
@@ -42,50 +42,90 @@ const Contact: React.FC = () => {
     <section
       css={css`
         background-color: ${color?.primary};
+        overflow: hidden;
+        position: relative;
       `}
     >
       <Container>
         <div
           css={css`
-            display: flex;
-            align-items: center;
-            position: relative;
+            padding: 200px 0;
 
             ${mq(`md`)} {
-              height: 700px;
+              position: relative;
             }
           `}
         >
-          <div
-            css={css`
-              position: absolute;
-              width: 450px;
-              height: 550px;
-              top: 50%;
-              right: 100px;
-              transform: translateY(-50%);
-              z-index: 1;
-            `}
-          >
-            <Img fluid={contact?.childImageSharp?.fluid} />
-          </div>
-          <div
+          <h2
             css={css`
               position: relative;
               z-index: 2;
+              color: ${color?.white};
+              margin-bottom: 75px;
+              text-align: center;
+              font-size: 24px;
+
+              ${mq(`md`)} {
+                font-size: 40px;
+              }
+
+              ${mq(`lg`)} {
+                text-align: left;
+                font-size: 60px;
+              }
             `}
           >
-            <h2
-              css={css`
-                color: ${color?.white};
-                margin-bottom: 75px;
-              `}
-            >
-              A lot of companies are working with us.
-              <br />
-              Are you ready to become our partner?
-            </h2>
+            {`Besoin d'aide pour votre projet ?`}
+            <br />
+            {`Recevez une offre gratuitement.`}
+          </h2>
+          <div
+            css={css`
+              text-align: center;
+
+              ${mq(`lg`)} {
+                text-align: left;
+              }
+            `}
+          >
             <Link to="/contact">Contact us</Link>
+          </div>
+          <div
+            css={css`
+              position: absolute;
+              width: 400px;
+              height: 500px;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+
+              ${mq(`lg`)} {
+                width: auto;
+                left: 500px;
+                // right: 100px;
+                right: 50px;
+                transform: translateY(-50%);
+              }
+
+              ${mq(`xl`)} {
+                left: 650px;
+                right: 100px;
+              }
+            `}
+          >
+            <Img
+              fluid={contact?.childImageSharp?.fluid}
+              css={css`
+                position: initial !important;
+                max-width: 768px;
+                margin: 0 auto;
+
+                ${mq(`md`)} {
+                  max-width: initial;
+                  margin: initial;
+                }
+              `}
+            />
           </div>
         </div>
       </Container>
