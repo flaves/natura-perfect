@@ -3,6 +3,7 @@ import { css } from '@emotion/core';
 import { GilroyFont, MixtaFont } from '../fonts/fonts';
 
 import marks from './marks';
+import mq from './mq';
 
 const reset = css`
   ${process.env.NODE_ENV === `development` && marks}
@@ -49,8 +50,13 @@ const reset = css`
   }
 
   h2 {
-    font-size: 60px;
+    font-size: 40px;
     margin-bottom: 20px;
+    
+    
+    ${mq(`md`)} {
+      font-size: 60px;
+    }
   }
 
   ul {

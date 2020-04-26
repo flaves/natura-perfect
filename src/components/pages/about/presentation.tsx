@@ -44,15 +44,7 @@ const Presentation: React.FC = () => {
             margin-bottom: 80px;
           `}
         >
-          <h2
-            css={css`
-              font-size: 30px;
-
-              ${mq(`md`)} {
-                font-size: 60px;
-              }
-            `}
-          >
+          <h2>
             Un partenaire
             <br />
             unique.
