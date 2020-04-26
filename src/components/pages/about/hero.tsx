@@ -3,6 +3,8 @@ import { css } from '@emotion/core';
 
 import Container from '../../styled/container';
 
+import mq from '../../../styles/mq';
+
 const Hero: React.FC = () => {
   return (
     <section
@@ -14,7 +16,11 @@ const Hero: React.FC = () => {
       <Container>
         <h1
           css={css`
-            font-size: 80px;
+            font-size: 40px;
+
+            ${mq(`md`)} {
+              font-size: 80px;
+            }
           `}
         >
           Experience you

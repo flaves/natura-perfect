@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 
 import { ImageType } from '../../../types/image';
 import Container from '../../styled/container';
+import mq from '../../../styles/mq';
 
 const query = graphql`
   {
@@ -43,7 +44,15 @@ const Presentation: React.FC = () => {
             margin-bottom: 80px;
           `}
         >
-          <h2>
+          <h2
+            css={css`
+              font-size: 30px;
+
+              ${mq(`md`)} {
+                font-size: 60px;
+              }
+            `}
+          >
             You are at the
             <br />
             right place.
@@ -51,7 +60,9 @@ const Presentation: React.FC = () => {
         </div>
         <div
           css={css`
-            display: flex;
+            ${mq(`md`)} {
+              display: flex;
+            }
           `}
         >
           <div
@@ -69,8 +80,12 @@ const Presentation: React.FC = () => {
           >
             <h3
               css={css`
-                font-size: 40px;
                 margin-bottom: 5px;
+                font-size: 24px;
+
+                ${mq(`md`)} {
+                  font-size: 40px;
+                }
               `}
             >
               Florian Rotty
