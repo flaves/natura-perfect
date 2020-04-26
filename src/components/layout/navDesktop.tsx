@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 
 import { LinkType } from '../../types/link';
 import { ThemeType } from '../../styles/theme';
+import mq from '../../styles/mq';
 
 interface NavDesktopProps {
   links: LinkType[];
@@ -16,10 +17,14 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
     (links: LinkType[]) => (
       <ul
         css={css`
-          flex: 1;
-          display: flex;
-          align-items: center;
+          display: none;
           height: 110px;
+
+          ${mq(`lg`)} {
+            flex: 1;
+            display: flex;
+            align-items: center;
+          }
         `}
       >
         {links?.map((link, key) => (
@@ -34,8 +39,16 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
                 a {
                   color: ${color?.primary};
                   font-family: Mixta, sans-serif;
-                  font-size: 30px;
+                  font-size: 20px;
                   font-weight: 900;
+
+                  ${mq(`lg`)} {
+                    font-size: 24px;
+                  }
+
+                  ${mq(`xl`)} {
+                    font-size: 30px;
+                  }
                 }
               }
 
@@ -55,10 +68,19 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
   return (
     <nav
       css={css`
-        height: 110px;
         display: flex;
+        justify-content: center;
         align-items: center;
-        padding: 0 100px;
+        height: 110px;
+
+        ${mq(`lg`)} {
+          justify-content: initial;
+          padding: 0 50px;
+        }
+
+        ${mq(`xl`)} {
+          padding: 0 100px;
+        }
       `}
     >
       <Link
@@ -66,9 +88,17 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
         css={css`
           color: ${color?.primary};
           font-family: Mixta, sans-serif;
-          font-size: 30px;
+          font-size: 20px;
           font-weight: 900;
-          margin-right: 20px;
+
+          ${mq(`lg`)} {
+            font-size: 24px;
+            margin-right: 20px;
+          }
+
+          ${mq(`xl`)} {
+            font-size: 30px;
+          }
         `}
       >
         Natura Perfect
