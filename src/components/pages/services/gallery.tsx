@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import { animated as a, useSpring } from 'react-spring';
 import { ResizeObserver as polyfill } from '@juggle/resize-observer/lib/ResizeObserver';
 import useMeasure from 'react-use-measure';
+import AliceCarousel from 'react-alice-carousel';
 
 import Close from '../../svg/close.svg';
 
@@ -44,18 +45,32 @@ const Gallery: React.FC<GalleryProps> = ({ active, images, setCurrent }) => {
 
   const renderImages = useCallback(
     () => (
-      <ul
-        css={css`
-          display: flex;
-          justify-content: center;
-          margin: 0 -2rem;
-        `}
+      <AliceCarousel
+        autoPlay
+        autoPlayInterval={3000}
+        responsive={{
+          0: {
+            items: 1,
+          },
+          768: {
+            items: 2,
+          },
+          992: {
+            items: 4,
+          },
+          1200: {
+            items: 5,
+          },
+        }}
+        buttonsDisabled
+        dotsDisabled
       >
         {images?.map((image, key) => (
-          <li
+          <div
             key={key}
             css={css`
-              padding: 0 2rem;
+              margin: 0 20px;
+              overflow: hidden;
             `}
           >
             <Img
@@ -65,9 +80,9 @@ const Gallery: React.FC<GalleryProps> = ({ active, images, setCurrent }) => {
                 height: 350px;
               `}
             />
-          </li>
+          </div>
         ))}
-      </ul>
+      </AliceCarousel>
     ),
     [images]
   );
@@ -77,8 +92,8 @@ const Gallery: React.FC<GalleryProps> = ({ active, images, setCurrent }) => {
       ref={section}
       style={collapse}
       css={css`
-        background-color: ${color.primary};
         overflow: hidden;
+        background-color: ${color.primary};
         margin: 0 -50px;
 
         ${mq(`md`)} {
@@ -97,7 +112,15 @@ const Gallery: React.FC<GalleryProps> = ({ active, images, setCurrent }) => {
             position: relative;
           `}
         >
-          {renderImages()}
+          <div
+            css={css`
+              ${mq(`lg`)} {
+                margin: 0 -100px;
+              }
+            `}
+          >
+            {renderImages()}
+          </div>
           <div
             css={css`
               width: 50px;
@@ -112,6 +135,11 @@ const Gallery: React.FC<GalleryProps> = ({ active, images, setCurrent }) => {
               justify-content: center;
               align-items: center;
               cursor: pointer;
+              transition: transform 0.3s;
+
+              &:hover {
+                transform: translate(-50%) rotate(90deg);
+              }
 
               svg {
                 width: 15px;

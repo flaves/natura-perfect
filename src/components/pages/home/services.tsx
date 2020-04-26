@@ -1,14 +1,15 @@
 import React, { useCallback, useMemo } from 'react';
 import { css } from '@emotion/core';
-import { Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import AliceCarousel from 'react-alice-carousel';
 
-import services from '../../../data/services.json';
-import ServiceEntity from '../../../types/service';
-import { graphql, useStaticQuery } from 'gatsby';
-import { ImageType } from '../../../types/image';
 import mq from '../../../styles/mq';
+
+import services from '../../../data/services.json';
+
+import ServiceEntity from '../../../types/service';
+import { ImageType } from '../../../types/image';
 
 const query = graphql`
   {
