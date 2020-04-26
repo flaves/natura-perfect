@@ -131,6 +131,7 @@ const Services: React.FC = () => {
                     justify-content: center;
                     align-items: center;
                     z-index: 2;
+                    padding: 0 1rem;
 
                     h3 {
                       color: white;
