@@ -52,7 +52,7 @@ const Gallery: React.FC<GalleryProps> = ({
   const renderImages = useCallback(
     () => (
       <AliceCarousel
-        // autoPlay
+        autoPlay
         autoPlayInterval={3000}
         responsive={{
           0: {
