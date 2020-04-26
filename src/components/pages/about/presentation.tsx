@@ -92,7 +92,7 @@ const Presentation: React.FC = () => {
             </h3>
             <h4
               css={css`
-                font-size: 24px;
+                font-size: 20px;
                 margin-bottom: 40px;
                 font-weight: 400;
               `}
