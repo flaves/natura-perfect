@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { css } from '@emotion/core';
 import Img from 'gatsby-image';
 import useMeasure from 'react-use-measure';
@@ -24,21 +24,19 @@ const Service: React.FC<ServiceProps> = ({
   scrollTo,
   toggleCurrent,
 }) => {
-  const [ref, { top, bottom }] = useMeasure();
+  const [ref, { top }] = useMeasure();
+  const animation = useRef<number>(0);
 
   useEffect(() => {
-    let id = 0;
-
     if (scrollTo) {
-      id = window.requestAnimationFrame(() => {
+      animation.current = requestAnimationFrame(() => {
         window.scrollTo({
           top: top - 100,
           behavior: 'smooth',
         });
       });
     }
-
-    return () => window.cancelAnimationFrame(id);
+    return () => cancelAnimationFrame(id);
   }, [scrollTo, top]);
 
   return (
@@ -117,7 +115,7 @@ const Service: React.FC<ServiceProps> = ({
         >
           {service?.description}
         </p>
-        <Button variant="black" onClick={() => toggleCurrent(id, bottom)}>
+        <Button variant="black" onClick={() => toggleCurrent(id)}>
           Découvrez
         </Button>
       </div>
