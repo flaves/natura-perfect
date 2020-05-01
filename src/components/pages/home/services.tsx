@@ -1,10 +1,11 @@
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { css } from '@emotion/core';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import AliceCarousel from 'react-alice-carousel';
 
 import mq from '../../../styles/mq';
+import Next from '../../shared/carousel/next';
 
 import Container from '../../styled/container';
 import services from '../../../data/services.json';
@@ -42,8 +43,9 @@ interface StaticQuery {
   };
 }
 
+let carousel: AliceCarousel | null;
+
 const Services: React.FC = () => {
-  const carousel = useRef(null);
   const { allFile } = useStaticQuery<StaticQuery>(query);
 
   const images = useMemo(() => allFile?.edges?.map((item) => item?.node), []);
@@ -52,17 +54,14 @@ const Services: React.FC = () => {
     () =>
       services?.map((service: ServiceEntity, key: number) => ({
         ...service,
-        image: images[key],
+        image: images?.[key],
       })),
     []
   );
 
-  console.log(carousel?.current);
-
   const renderServices = useCallback(
     () => (
       <AliceCarousel
-        ref={carousel}
         autoPlay
         autoPlayInterval={3000}
         responsive={{
@@ -81,6 +80,7 @@ const Services: React.FC = () => {
         }}
         buttonsDisabled
         dotsDisabled
+        ref={(el) => (carousel = el)}
       >
         {servicesWithImage?.map((service, key) => (
           <div
@@ -89,7 +89,10 @@ const Services: React.FC = () => {
               margin: 0 20px;
             `}
           >
-            <Link to="/services">
+            <Link
+              to="/services"
+              onClick={() => localStorage.setItem(`service`, key.toString())}
+            >
               <article
                 css={css`
                   position: relative;
@@ -101,24 +104,26 @@ const Services: React.FC = () => {
                     }
                   }
 
-                  &::after {
-                    opacity: 0;
-                    transition: opacity 0.4s;
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: hsla(164, 19%, 27%, 0.8);
+                  ${mq(`lg`)} {
+                    &::after {
+                      opacity: 0;
+                      transition: opacity 0.4s;
+                      content: '';
+                      position: absolute;
+                      top: 0;
+                      right: 0;
+                      bottom: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      background-color: hsla(164, 19%, 27%, 0.8);
+                    }
                   }
                 `}
               >
                 <div
                   css={css`
-                    opacity: 0;
+                    opacity: 1;
                     transition: opacity 0.5s;
                     position: absolute;
                     top: 0;
@@ -134,9 +139,9 @@ const Services: React.FC = () => {
                     padding: 0 1rem;
 
                     h3 {
-                      color: white;
                       font-size: 40px;
                       text-align: center;
+                      color: white;
                     }
                   `}
                 >
@@ -185,11 +190,15 @@ const Services: React.FC = () => {
       </Container>
       <div
         css={css`
+          position: relative;
+
           ${mq(`lg`)} {
             margin: 0 -100px;
           }
         `}
       >
+        <Next onClick={() => carousel?.slideNext()} />
+        <Next onClick={() => carousel?.slidePrev()} right={false} />
         {renderServices()}
       </div>
     </section>

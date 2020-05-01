@@ -33,6 +33,8 @@ const Title: React.FC = () => (
       font-size: 40px;
       text-align: center;
       margin-bottom: 30px;
+      position: relative;
+      z-index: 2;
 
       ${mq(`sm`)} {
         font-size: 60px;
@@ -66,7 +68,10 @@ const Title: React.FC = () => (
     </span>
     <span
       css={css`
+        color: white;
+
         ${mq(`lg`)} {
+          color: black;
           position: relative;
           left: 33px;
         }
@@ -114,8 +119,10 @@ const Hero: React.FC = () => {
           css={css`
             text-align: center;
             margin-bottom: 50px;
+            display: none;
 
             ${mq(`lg`)} {
+              display: initial;
               text-align: left;
               padding-top: 40px;
               padding-left: 100px;
@@ -128,6 +135,17 @@ const Hero: React.FC = () => {
         </div>
         <div
           css={css`
+            position: relative;
+            top: -78px;
+
+            ${mq(`sm`)} {
+              top: -105px;
+            }
+
+            ${mq(`md`)} {
+              top: -130px;
+            }
+
             ${mq(`lg`)} {
               position: absolute;
               height: 650px;
@@ -150,6 +168,19 @@ const Hero: React.FC = () => {
               }
             `}
           />
+        </div>
+        <div
+          css={css`
+            text-align: center;
+
+            ${mq(`lg`)} {
+              display: none;
+            }
+          `}
+        >
+          <Link to="/contact" variant="black">
+            Devis gratuit
+          </Link>
         </div>
       </div>
     </section>

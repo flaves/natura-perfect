@@ -119,7 +119,7 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ links }) => {
           padding-top: 10px;
 
           svg {
-            width: 50px;
+            width: 70px;
             height: auto;
           }
 
