@@ -37,7 +37,7 @@ const Service: React.FC<ServiceProps> = ({
       });
     }
     return () => cancelAnimationFrame(id);
-  }, [scrollTo, top]);
+  }, [scrollTo]);
 
   return (
     <article
