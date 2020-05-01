@@ -95,16 +95,16 @@ const Services: React.FC = () => {
             >
               <article
                 css={css`
-                  ${mq(`lg`)} {
-                    position: relative;
+                  position: relative;
 
-                    &:hover {
-                      &::after,
-                      & > div {
-                        opacity: 1;
-                      }
+                  &:hover {
+                    &::after,
+                    & > div {
+                      opacity: 1;
                     }
+                  }
 
+                  ${mq(`lg`)} {
                     &::after {
                       opacity: 0;
                       transition: opacity 0.4s;
@@ -123,30 +123,25 @@ const Services: React.FC = () => {
               >
                 <div
                   css={css`
-                    ${mq(`lg`)} {
-                      opacity: 0;
-                      transition: opacity 0.5s;
-                      position: absolute;
-                      top: 0;
-                      right: 0;
-                      bottom: 0;
-                      left: 0;
-                      width: 100%;
-                      height: 100%;
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      z-index: 2;
-                      padding: 0 1rem;
-                    }
+                    opacity: 1;
+                    transition: opacity 0.5s;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 2;
+                    padding: 0 1rem;
 
                     h3 {
                       font-size: 40px;
                       text-align: center;
-
-                      ${mq(`lg`)} {
-                        color: white;
-                      }
+                      color: white;
                     }
                   `}
                 >

@@ -20,10 +20,10 @@ const Next: React.FC<NextProps> = ({ right = true, ...props }) => {
       {...props}
       css={css`
         position: absolute;
-        top: 55%;
+        top: 50%;
         right: ${right ? `30px` : `auto`};
         left: ${right ? `auto` : `30px`};
-        transform: translateY(-55%);
+        transform: translateY(-50%);
         z-index: 10;
         cursor: pointer;
         transition: background-color 0.5s;
