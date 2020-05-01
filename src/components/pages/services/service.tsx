@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { css } from '@emotion/core';
 import Img from 'gatsby-image';
-import useMeasure from 'react-use-measure';
 
 import mq from '../../../styles/mq';
 
@@ -24,14 +23,14 @@ const Service: React.FC<ServiceProps> = ({
   scrollTo,
   toggleCurrent,
 }) => {
-  const [ref, { top }] = useMeasure();
+  const element = useRef<HTMLDivElement>(null);
   const animation = useRef<number>(0);
 
   useEffect(() => {
     if (scrollTo) {
       animation.current = requestAnimationFrame(() => {
         window.scrollTo({
-          top: top - 100,
+          top: (element?.current?.offsetTop || 0) - 100,
           behavior: 'smooth',
         });
       });
@@ -41,7 +40,7 @@ const Service: React.FC<ServiceProps> = ({
 
   return (
     <article
-      ref={ref}
+      ref={element}
       css={css`
         margin-bottom: 75px;
 
