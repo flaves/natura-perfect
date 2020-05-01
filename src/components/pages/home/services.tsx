@@ -190,16 +190,26 @@ const Services: React.FC = () => {
       </Container>
       <div
         css={css`
-          position: relative;
+          text-align: center;
 
           ${mq(`lg`)} {
             margin: 0 -100px;
           }
         `}
       >
-        <Next onClick={() => carousel?.slideNext()} />
-        <Next onClick={() => carousel?.slidePrev()} right={false} />
         {renderServices()}
+        <div
+          css={css`
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100px;
+            margin: auto;
+          `}
+        >
+          <Next onClick={() => carousel?.slidePrev()} right={false} />
+          <Next onClick={() => carousel?.slideNext()} />
+        </div>
       </div>
     </section>
   );
