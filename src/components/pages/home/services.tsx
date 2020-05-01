@@ -57,8 +57,6 @@ const Services: React.FC = () => {
     []
   );
 
-  console.log(carousel?.current);
-
   const renderServices = useCallback(
     () => (
       <AliceCarousel
@@ -89,7 +87,10 @@ const Services: React.FC = () => {
               margin: 0 20px;
             `}
           >
-            <Link to="/services">
+            <Link
+              to="/services"
+              onClick={() => localStorage.setItem(`service`, key.toString())}
+            >
               <article
                 css={css`
                   position: relative;

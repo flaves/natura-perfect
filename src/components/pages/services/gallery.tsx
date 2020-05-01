@@ -3,7 +3,6 @@ import { css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
 import Img from 'gatsby-image';
 import { animated as a, useSpring } from 'react-spring';
-import { ResizeObserver as polyfill } from '@juggle/resize-observer/lib/ResizeObserver';
 import useMeasure from 'react-use-measure';
 import AliceCarousel from 'react-alice-carousel';
 
@@ -27,26 +26,27 @@ const Gallery: React.FC<GalleryProps> = ({
   name,
   setCurrent,
 }) => {
-  const section = useRef<HTMLElement>(null);
-  const [ref, { height }] = useMeasure({ polyfill });
+  const element = useRef<HTMLDivElement>(null);
+  const [heightRef, { height }] = useMeasure();
   const collapse = useSpring({
     maxHeight: active ? `${height}px` : `0px`,
     overflow: `hidden`,
   });
   const { color } = useTheme<ThemeType>();
+  const id = useRef<number>(0);
 
   useEffect(() => {
-    let id = 0;
     if (active) {
       window.setTimeout(() => {
-        id = window.requestAnimationFrame(() => {
-          section?.current?.scrollIntoView({
+        id.current = requestAnimationFrame(() => {
+          window.scrollTo({
+            top: element?.current?.offsetTop,
             behavior: `smooth`,
           });
         });
       }, 500);
     }
-    return () => window.cancelAnimationFrame(id);
+    return () => cancelAnimationFrame(id.current);
   }, [active]);
 
   const renderImages = useCallback(
@@ -97,82 +97,83 @@ const Gallery: React.FC<GalleryProps> = ({
   );
 
   return (
-    <a.section
-      ref={section}
-      style={collapse}
-      css={css`
-        overflow: hidden;
-        background-color: ${color.primary};
-        margin: 0 -50px;
+    <div ref={element}>
+      <a.section
+        style={collapse}
+        css={css`
+          overflow: hidden;
+          background-color: ${color.primary};
+          margin: 0 -50px;
 
-        ${mq(`md`)} {
-          margin: 0 -100px;
-        }
+          ${mq(`md`)} {
+            margin: 0 -100px;
+          }
 
-        ${mq(`xl`)} {
-          margin: 0 -200px;
-        }
-      `}
-    >
-      <div ref={ref}>
-        <div
-          css={css`
-            padding: 50px 0 150px 0;
-            position: relative;
-          `}
-        >
-          <h3
-            css={css`
-              color: hsl(164, 19%, 15%);
-              font-size: 50px;
-              margin-bottom: 50px;
-              text-align: center;
-            `}
-          >
-            {name}
-          </h3>
+          ${mq(`xl`)} {
+            margin: 0 -200px;
+          }
+        `}
+      >
+        <div ref={heightRef}>
           <div
             css={css`
-              ${mq(`lg`)} {
-                margin: 0 -100px;
-              }
+              padding: 50px 0 150px 0;
+              position: relative;
             `}
           >
-            {renderImages()}
-          </div>
-          <div
-            css={css`
-              width: 50px;
-              height: 50px;
-              background-color: hsl(164, 19%, 15%);
-              position: absolute;
-              left: 50%;
-              transform: translate(-50%);
-              bottom: 50px;
-              border-radius: 50%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              transition: transform 0.3s;
+            <h3
+              css={css`
+                color: hsl(164, 19%, 15%);
+                font-size: 50px;
+                margin-bottom: 50px;
+                text-align: center;
+              `}
+            >
+              {name}
+            </h3>
+            <div
+              css={css`
+                ${mq(`lg`)} {
+                  margin: 0 -100px;
+                }
+              `}
+            >
+              {renderImages()}
+            </div>
+            <div
+              css={css`
+                width: 50px;
+                height: 50px;
+                background-color: hsl(164, 19%, 15%);
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%);
+                bottom: 50px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: transform 0.3s;
 
-              &:hover {
-                transform: translate(-50%) rotate(90deg);
-              }
+                &:hover {
+                  transform: translate(-50%) rotate(90deg);
+                }
 
-              svg {
-                width: 15px;
-                height: 15px;
-                fill: white;
-              }
-            `}
-            onClick={() => setCurrent(undefined)}
-          >
-            <Close />
+                svg {
+                  width: 15px;
+                  height: 15px;
+                  fill: white;
+                }
+              `}
+              onClick={() => setCurrent(undefined)}
+            >
+              <Close />
+            </div>
           </div>
         </div>
-      </div>
-    </a.section>
+      </a.section>
+    </div>
   );
 };
 
