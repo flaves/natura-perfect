@@ -10,7 +10,7 @@ interface TitleProps {
 
 const AnimTitle: React.FC<TitleProps> = ({ children, delay = 0 }) => {
   const [ref, inView] = useInView({
-    threshold: 0.4,
+    threshold: 0.2,
     triggerOnce: true,
   });
   const spring = useSpring({
@@ -30,21 +30,21 @@ const AnimTitle: React.FC<TitleProps> = ({ children, delay = 0 }) => {
   });
 
   return (
-    <div
+    <span
       ref={ref}
       css={css`
         display: inline;
       `}
     >
-      <a.div
+      <a.span
         style={spring}
         css={css`
           display: inline-block;
         `}
       >
         {children}
-      </a.div>
-    </div>
+      </a.span>
+    </span>
   );
 };
 

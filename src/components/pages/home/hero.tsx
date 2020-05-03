@@ -9,6 +9,7 @@ import Link from '../../shared/link';
 import mq from '../../../styles/mq';
 
 import { ImageType } from '../../../types/image';
+import useParallax from '../../../hooks/useParallax';
 
 const query = graphql`
   {
@@ -65,7 +66,7 @@ const Title: React.FC = () => (
     `}
   >
     <span>
-      <AnimTitle delay={500}>
+      <AnimTitle delay={250}>
         Natur
         <span
           css={css`
@@ -89,7 +90,7 @@ const Title: React.FC = () => (
         }
       `}
     >
-      <AnimTitle delay={1000}>
+      <AnimTitle delay={500}>
         Perfe
         <span
           css={css`
@@ -109,9 +110,11 @@ interface StaticQueryType {
 
 const Hero: React.FC = () => {
   const { hero } = useStaticQuery<StaticQueryType>(query);
+  const [ref, value] = useParallax();
 
   return (
     <section
+      ref={ref}
       css={css`
         margin-bottom: 100px;
         overflow: hidden;
@@ -158,6 +161,7 @@ const Hero: React.FC = () => {
           css={css`
             position: relative;
             top: -78px;
+            overflow: hidden;
 
             ${mq(`sm`)} {
               top: -105px;
@@ -176,19 +180,25 @@ const Hero: React.FC = () => {
             }
           `}
         >
-          <Img
-            fluid={hero?.childImageSharp?.fluid}
-            css={css`
-              // max-width: 768px;
-              // margin: 0 auto;
+          <div
+            style={{
+              transform: `translate3d(0px, ${value * 2}px, 0px)`,
+            }}
+          >
+            <Img
+              fluid={hero?.childImageSharp?.fluid}
+              css={css`
+                // max-width: 768px;
+                // margin: 0 auto;
 
-              ${mq(`lg`)} {
-                position: initial !important;
-                max-width: initial;
-                margin: initial;
-              }
-            `}
-          />
+                ${mq(`lg`)} {
+                  position: initial !important;
+                  max-width: initial;
+                  margin: initial;
+                }
+              `}
+            />
+          </div>
         </div>
         <div
           css={css`

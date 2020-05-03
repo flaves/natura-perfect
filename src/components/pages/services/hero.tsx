@@ -7,6 +7,7 @@ import mq from '../../../styles/mq';
 
 import { ImageType } from '../../../types/image';
 import AnimTitle from '../../animation/animTitle';
+import useParallax from '../../../hooks/useParallax';
 
 const query = graphql`
   {
@@ -66,7 +67,7 @@ const query = graphql`
       childImageSharp {
         fluid(
           maxWidth: 1440
-          maxHeight: 450
+          maxHeight: 600
           cropFocus: CENTER
           fit: COVER
           quality: 80
@@ -87,6 +88,7 @@ interface StaticQuery {
 }
 
 const Hero: React.FC = () => {
+  const [ref, value] = useParallax();
   const { hero, heroSM, heroMD, heroLG, heroXL } = useStaticQuery<StaticQuery>(
     query
   );
@@ -113,6 +115,7 @@ const Hero: React.FC = () => {
 
   return (
     <section
+      ref={ref}
       css={css`
         padding-top: 50px;
         margin-bottom: 50px;
@@ -150,6 +153,7 @@ const Hero: React.FC = () => {
       </h1>
       <div
         css={css`
+          overflow: hidden;
           height: 450px;
           position: relative;
           top: -50px;
@@ -163,19 +167,25 @@ const Hero: React.FC = () => {
           }
         `}
       >
-        <Img
-          fluid={sources}
-          css={css`
-            position: initial !important;
-            max-width: 768px;
-            margin: 0 auto;
+        <div
+          style={{
+            transform: `translate3d(0px, ${value * 2}px, 0px)`,
+          }}
+        >
+          <Img
+            fluid={sources}
+            css={css`
+              position: initial !important;
+              max-width: 768px;
+              margin: 0 auto;
 
-            ${mq(`md`)} {
-              max-width: initial;
-              margin: initial;
-            }
-          `}
-        />
+              ${mq(`md`)} {
+                max-width: initial;
+                margin: initial;
+              }
+            `}
+          />
+        </div>
       </div>
     </section>
   );
