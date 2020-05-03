@@ -256,7 +256,6 @@ const Hero: React.FC = () => {
             position: relative;
             top: -78px;
             overflow: hidden;
-            margin-bottom: -78px;
 
             ${mq(`sm`)} {
               top: -105px;
