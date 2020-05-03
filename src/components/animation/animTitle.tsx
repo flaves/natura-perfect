@@ -39,13 +39,19 @@ const renderVariant = (inView: boolean, variant: VariantType) => {
 interface TitleProps {
   children: React.ReactNode;
   delay?: number;
+  triggerOnce?: boolean;
   variant?: VariantType;
 }
 
-const AnimTitle: React.FC<TitleProps> = ({ children, delay = 0, variant }) => {
+const AnimTitle: React.FC<TitleProps> = ({
+  children,
+  delay = 0,
+  triggerOnce = true,
+  variant,
+}) => {
   const [ref, inView] = useInView({
     threshold: 0.2,
-    triggerOnce: true,
+    triggerOnce,
   });
   const spring = useSpring({
     ...renderVariant(inView, variant),
