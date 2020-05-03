@@ -3,6 +3,7 @@ import { css } from '@emotion/core';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
+import AnimTitle from '../../animation/animTitle';
 import Link from '../../shared/link';
 
 import mq from '../../../styles/mq';
@@ -64,7 +65,18 @@ const Title: React.FC = () => (
     `}
   >
     <span>
-      Natur<span>a</span>
+      <AnimTitle delay={500}>
+        Natur
+        <span
+          css={css`
+            ${mq(`lg`)} {
+              color: white;
+            }
+          `}
+        >
+          a
+        </span>
+      </AnimTitle>
     </span>
     <span
       css={css`
@@ -77,7 +89,16 @@ const Title: React.FC = () => (
         }
       `}
     >
-      Perfe<span>ct</span>
+      <AnimTitle delay={1000}>
+        Perfe
+        <span
+          css={css`
+            color: white;
+          `}
+        >
+          ct
+        </span>
+      </AnimTitle>
     </span>
   </h1>
 );

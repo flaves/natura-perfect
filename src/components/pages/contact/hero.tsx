@@ -8,6 +8,7 @@ import mq from '../../../styles/mq';
 import DownArrow from '../../../svg/down-arrow.svg';
 
 import { ImageType } from '../../../types/image';
+import AnimTitle from '../../animation/animTitle';
 
 const query = graphql`
   {
@@ -98,18 +99,21 @@ const Title: React.FC = () => (
       }
     `}
   >
-    Votre devis{' '}
+    <AnimTitle delay={500}>Votre devis </AnimTitle>
     <span
       css={css`
+        padding-left: 10px;
+
         ${mq(`lg`)} {
           color: white;
+          padding-left: 20px;
         }
       `}
     >
-      personnalisé.
+      <AnimTitle delay={1000}> personnalisé.</AnimTitle>
     </span>
     <br />
-    Et gratuit.
+    <AnimTitle delay={1500}>Et gratuit.</AnimTitle>
   </h1>
 );
 

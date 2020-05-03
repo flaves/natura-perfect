@@ -21,11 +21,12 @@ const Loader: React.FC = () => {
     delay: 300,
   });
 
-  const ref = useInterval(() => setCount(count + 1), 50 + count / 3);
+  const ref = useInterval(() => setCount(count + 1), 20 + count / 4);
 
   useEffect(() => {
     if (count === 100) {
-      window.clearInterval(ref.current);
+      clearInterval(ref.current);
+      localStorage.setItem(`isLoaderFull`, `true`);
     }
   }, [count]);
 

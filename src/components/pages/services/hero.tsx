@@ -6,6 +6,7 @@ import Img from 'gatsby-image';
 import mq from '../../../styles/mq';
 
 import { ImageType } from '../../../types/image';
+import AnimTitle from '../../animation/animTitle';
 
 const query = graphql`
   {
@@ -137,14 +138,14 @@ const Hero: React.FC = () => {
           }
         `}
       >
-        Des services adaptés
+        <AnimTitle delay={500}>Des services adaptés</AnimTitle>
         <br />
         <span
           css={css`
             color: white;
           `}
         >
-          à vos besoins.
+          <AnimTitle delay={750}>à vos besoins.</AnimTitle>
         </span>
       </h1>
       <div
