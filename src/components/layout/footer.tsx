@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
         `}
       >
         <div>+32 499 62 95 59</div>
-        <div>hello@natura-perfect.be</div>
+        <div>florian@natura-perfect.be</div>
       </div>
       <div>
         <div
