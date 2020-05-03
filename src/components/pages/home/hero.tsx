@@ -67,7 +67,13 @@ const Title: React.FC = () => (
   >
     <span>
       <AnimTitle delay={250}>
-        Natur
+        <span
+          css={css`
+            color: black;
+          `}
+        >
+          Natur
+        </span>
         <span
           css={css`
             ${mq(`lg`)} {
@@ -91,7 +97,13 @@ const Title: React.FC = () => (
       `}
     >
       <AnimTitle delay={500}>
-        Perfe
+        <span
+          css={css`
+            color: black;
+          `}
+        >
+          Perfe
+        </span>
         <span
           css={css`
             color: white;
