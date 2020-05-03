@@ -3,11 +3,13 @@ import { css } from '@emotion/core';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
+import AnimTitle from '../../animation/animTitle';
 import Link from '../../shared/link';
 
 import mq from '../../../styles/mq';
 
 import { ImageType } from '../../../types/image';
+import useParallax from '../../../hooks/useParallax';
 
 const query = graphql`
   {
@@ -64,7 +66,24 @@ const Title: React.FC = () => (
     `}
   >
     <span>
-      Natur<span>a</span>
+      <AnimTitle delay={250}>
+        <span
+          css={css`
+            color: black;
+          `}
+        >
+          Natur
+        </span>
+        <span
+          css={css`
+            ${mq(`lg`)} {
+              color: white;
+            }
+          `}
+        >
+          a
+        </span>
+      </AnimTitle>
     </span>
     <span
       css={css`
@@ -77,7 +96,22 @@ const Title: React.FC = () => (
         }
       `}
     >
-      Perfe<span>ct</span>
+      <AnimTitle delay={500}>
+        <span
+          css={css`
+            color: black;
+          `}
+        >
+          Perfe
+        </span>
+        <span
+          css={css`
+            color: white;
+          `}
+        >
+          ct
+        </span>
+      </AnimTitle>
     </span>
   </h1>
 );
@@ -88,9 +122,11 @@ interface StaticQueryType {
 
 const Hero: React.FC = () => {
   const { hero } = useStaticQuery<StaticQueryType>(query);
+  const [ref, value] = useParallax();
 
   return (
     <section
+      ref={ref}
       css={css`
         margin-bottom: 100px;
         overflow: hidden;
@@ -137,6 +173,7 @@ const Hero: React.FC = () => {
           css={css`
             position: relative;
             top: -78px;
+            overflow: hidden;
 
             ${mq(`sm`)} {
               top: -105px;
@@ -155,19 +192,25 @@ const Hero: React.FC = () => {
             }
           `}
         >
-          <Img
-            fluid={hero?.childImageSharp?.fluid}
-            css={css`
-              // max-width: 768px;
-              // margin: 0 auto;
+          <div
+            style={{
+              transform: `translate3d(0px, ${value * 2}px, 0px)`,
+            }}
+          >
+            <Img
+              fluid={hero?.childImageSharp?.fluid}
+              css={css`
+                // max-width: 768px;
+                // margin: 0 auto;
 
-              ${mq(`lg`)} {
-                position: initial !important;
-                max-width: initial;
-                margin: initial;
-              }
-            `}
-          />
+                ${mq(`lg`)} {
+                  position: initial !important;
+                  max-width: initial;
+                  margin: initial;
+                }
+              `}
+            />
+          </div>
         </div>
         <div
           css={css`

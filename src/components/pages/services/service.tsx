@@ -7,6 +7,7 @@ import mq from '../../../styles/mq';
 import Button from '../../shared/button';
 
 import ServiceEntity from '../../../types/service';
+import AnimTitle from '../../animation/animTitle';
 
 const isEven = (n: number) => n % 2 === 0;
 
@@ -100,7 +101,7 @@ const Service: React.FC<ServiceProps> = ({
             }
           `}
         >
-          {service?.name}
+          <AnimTitle delay={250}>{service?.name}</AnimTitle>
         </h2>
         <p
           css={css`
@@ -112,7 +113,7 @@ const Service: React.FC<ServiceProps> = ({
             }
           `}
         >
-          {service?.description}
+          <AnimTitle delay={500}>{service?.description}</AnimTitle>
         </p>
         <Button variant="black" onClick={() => toggleCurrent(id)}>
           Découvrez

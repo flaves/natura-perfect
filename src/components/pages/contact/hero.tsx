@@ -8,6 +8,8 @@ import mq from '../../../styles/mq';
 import DownArrow from '../../../svg/down-arrow.svg';
 
 import { ImageType } from '../../../types/image';
+import AnimTitle from '../../animation/animTitle';
+import useParallax from '../../../hooks/useParallax';
 
 const query = graphql`
   {
@@ -98,18 +100,21 @@ const Title: React.FC = () => (
       }
     `}
   >
-    Votre devis{' '}
+    <AnimTitle delay={500}>Votre devis </AnimTitle>
     <span
       css={css`
+        padding-left: 10px;
+
         ${mq(`lg`)} {
           color: white;
+          padding-left: 20px;
         }
       `}
     >
-      personnalisé.
+      <AnimTitle delay={1000}> personnalisé.</AnimTitle>
     </span>
     <br />
-    Et gratuit.
+    <AnimTitle delay={1500}>Et gratuit.</AnimTitle>
   </h1>
 );
 
@@ -122,6 +127,7 @@ interface StaticQuery {
 }
 
 const Hero: React.FC = () => {
+  const [ref, value] = useParallax();
   const { hero, heroSM, heroMD, heroLG, heroXL } = useStaticQuery<StaticQuery>(
     query
   );
@@ -148,6 +154,7 @@ const Hero: React.FC = () => {
 
   return (
     <section
+      ref={ref}
       css={css`
         padding-left: 0;
         max-height: 600px;
@@ -204,7 +211,13 @@ const Hero: React.FC = () => {
             }
           `}
         >
-          <Img fluid={sources} />
+          <div
+            style={{
+              transform: `translate3d(0px, ${value * 2}px, 0px)`,
+            }}
+          >
+            <Img fluid={sources} />
+          </div>
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import { css } from '@emotion/core';
 import Container from '../../styled/container';
 
 import mq from '../../../styles/mq';
+import AnimTitle from '../../animation/animTitle';
 
 const Hero: React.FC = () => {
   return (
@@ -23,9 +24,9 @@ const Hero: React.FC = () => {
             }
           `}
         >
-          Une relation
+          <AnimTitle delay={500}>Une relation</AnimTitle>
           <br />
-          de confiance.
+          <AnimTitle delay={750}>de confiance.</AnimTitle>
         </h1>
       </Container>
     </section>

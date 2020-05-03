@@ -6,6 +6,7 @@ import Img from 'gatsby-image';
 import { ImageType } from '../../../types/image';
 import Container from '../../styled/container';
 import mq from '../../../styles/mq';
+import AnimTitle from '../../animation/animTitle';
 
 const query = graphql`
   {
@@ -45,9 +46,9 @@ const Presentation: React.FC = () => {
           `}
         >
           <h2>
-            Un partenaire
+            <AnimTitle delay={500}>Un partenaire</AnimTitle>
             <br />
-            unique.
+            <AnimTitle delay={750}>unique.</AnimTitle>
           </h2>
         </div>
         <div

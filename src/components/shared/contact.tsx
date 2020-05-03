@@ -4,6 +4,7 @@ import { useTheme } from 'emotion-theming';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
+import AnimTitle from '../animation/animTitle';
 import Link from './link';
 import Container from '../styled/container';
 
@@ -75,9 +76,9 @@ const Contact: React.FC = () => {
               }
             `}
           >
-            {`Un projet dans la tête ?`}
+            <AnimTitle delay={500}>Un projet dans la tête ?</AnimTitle>
             <br />
-            {`Recevez une offre gratuitement.`}
+            <AnimTitle delay={750}>Recevez une offre gratuitement.</AnimTitle>
           </h2>
           <div
             css={css`
@@ -102,7 +103,6 @@ const Contact: React.FC = () => {
               ${mq(`lg`)} {
                 width: auto;
                 left: 500px;
-                // right: 100px;
                 right: 50px;
                 transform: translateY(-50%);
               }
