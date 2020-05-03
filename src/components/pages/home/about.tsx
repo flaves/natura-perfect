@@ -8,6 +8,7 @@ import mq from '../../../styles/mq';
 import Container from '../../styled/container';
 
 import { ImageType } from '../../../types/image';
+import AnimTitle from '../../animation/animTitle';
 
 const query = graphql`
   {
@@ -113,7 +114,9 @@ const About: React.FC = () => {
             margin-bottom: 75px;
           `}
         >
-          <h2>À propos</h2>
+          <h2>
+            <AnimTitle delay={500}>À propos</AnimTitle>
+          </h2>
           <p
             css={css`
               ${mq(`md`)} {
@@ -121,8 +124,11 @@ const About: React.FC = () => {
               }
             `}
           >
-            Quelles que soient vos envies, nous sommes à l’écoute de vos besoins
-            pour vous proposer des solutions à la hauteur de vos attentes.
+            <AnimTitle variant="fade" delay={750}>
+              Quelles que soient vos envies, nous sommes à l’écoute de vos
+              besoins pour vous proposer des solutions à la hauteur de vos
+              attentes.
+            </AnimTitle>
           </p>
         </div>
         <div>{renderImages(images)}</div>
