@@ -8,6 +8,7 @@ import mq from '../../styles/mq';
 
 import { LinkType } from '../../types/link';
 import { ThemeType } from '../../styles/theme';
+import AnimTitle from '../animation/animTitle';
 
 interface NavMobileProps {
   active: boolean;
@@ -107,9 +108,13 @@ const NavMobile: React.FC<NavMobileProps> = ({ active = false, links }) => {
           line-height: 2;
         `}
       >
-        +32 499 62 95 59
+        <AnimTitle delay={750} triggerOnce={false}>
+          +32 499 62 95 59
+        </AnimTitle>
         <br />
-        hello@natura-perfect.be
+        <AnimTitle delay={1000} triggerOnce={false}>
+          florian@natura-perfect.be
+        </AnimTitle>
       </div>
     </a.nav>
   );
