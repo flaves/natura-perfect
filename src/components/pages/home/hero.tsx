@@ -7,17 +7,69 @@ import AnimTitle from '../../animation/animTitle';
 import Link from '../../shared/link';
 
 import mq from '../../../styles/mq';
+import useParallax from '../../../hooks/useParallax';
 
 import { ImageType } from '../../../types/image';
-import useParallax from '../../../hooks/useParallax';
 
 const query = graphql`
   {
     hero: file(name: { eq: "hero" }, relativeDirectory: { eq: "home" }) {
       childImageSharp {
         fluid(
+          maxWidth: 500
+          maxHeight: 700
+          cropFocus: CENTER
+          fit: COVER
+          quality: 80
+        ) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    heroSM: file(name: { eq: "hero" }, relativeDirectory: { eq: "home" }) {
+      childImageSharp {
+        fluid(
+          maxWidth: 700
+          maxHeight: 700
+          cropFocus: CENTER
+          fit: COVER
+          quality: 80
+        ) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    heroMD: file(name: { eq: "hero" }, relativeDirectory: { eq: "home" }) {
+      childImageSharp {
+        fluid(
+          maxWidth: 800
+          maxHeight: 700
+          cropFocus: CENTER
+          fit: COVER
+          quality: 80
+        ) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    heroLG: file(name: { eq: "hero" }, relativeDirectory: { eq: "home" }) {
+      childImageSharp {
+        fluid(
+          maxWidth: 1000
+          maxHeight: 700
+          cropFocus: CENTER
+          fit: COVER
+          quality: 80
+        ) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    heroXL: file(name: { eq: "hero" }, relativeDirectory: { eq: "home" }) {
+      childImageSharp {
+        fluid(
           maxWidth: 1440
-          maxHeight: 650
+          maxHeight: 700
           cropFocus: CENTER
           fit: COVER
           quality: 80
@@ -122,11 +174,37 @@ const Title: React.FC = () => (
 
 interface StaticQueryType {
   hero: ImageType;
+  heroSM: ImageType;
+  heroMD: ImageType;
+  heroLG: ImageType;
+  heroXL: ImageType;
 }
 
 const Hero: React.FC = () => {
-  const { hero } = useStaticQuery<StaticQueryType>(query);
+  const { hero, heroSM, heroMD, heroLG, heroXL } = useStaticQuery<
+    StaticQueryType
+  >(query);
   const [ref, value] = useParallax();
+
+  const sources = [
+    hero.childImageSharp.fluid,
+    {
+      ...heroXL.childImageSharp.fluid,
+      media: `(min-width: 1200px)`,
+    },
+    {
+      ...heroLG.childImageSharp.fluid,
+      media: `(min-width: 992px)`,
+    },
+    {
+      ...heroMD.childImageSharp.fluid,
+      media: `(min-width: 768px)`,
+    },
+    {
+      ...heroSM.childImageSharp.fluid,
+      media: `(min-width: 576px)`,
+    },
+  ];
 
   return (
     <section
@@ -191,7 +269,6 @@ const Hero: React.FC = () => {
 
             ${mq(`lg`)} {
               position: absolute;
-              height: 650px;
               width: 100%;
               left: 377px;
               top: 0;
@@ -199,18 +276,21 @@ const Hero: React.FC = () => {
           `}
         >
           <div
+            css={css`
+              height: 600px;
+            `}
             style={{
               transform: `translate3d(0px, ${value * 2}px, 0px)`,
             }}
           >
             <Img
-              fluid={hero?.childImageSharp?.fluid}
+              fluid={sources}
               css={css`
-                // max-width: 768px;
-                // margin: 0 auto;
+                position: initial !important;
+                max-width: 768px;
+                margin: 0 auto;
 
                 ${mq(`lg`)} {
-                  position: initial !important;
                   max-width: initial;
                   margin: initial;
                 }
