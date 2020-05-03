@@ -16,7 +16,7 @@ const useParallax = (): [
     const y = bounds?.y;
     const height = bounds?.height;
 
-    if (inView) setValue(Math.round((y / height) * 100));
+    if (inView && y < 0) setValue(Math.round((y / height) * 100));
   }, [bounds, inView]);
 
   const setRefs = useCallback((node) => {
