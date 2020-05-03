@@ -259,7 +259,6 @@ const Hero: React.FC = () => {
             margin-bottom: -78px;
 
             ${mq(`sm`)} {
-              margin-bottom: 0;
               top: -105px;
             }
 
@@ -268,6 +267,7 @@ const Hero: React.FC = () => {
             }
 
             ${mq(`lg`)} {
+              margin-bottom: 0;
               position: absolute;
               width: 100%;
               left: 377px;
@@ -277,7 +277,12 @@ const Hero: React.FC = () => {
         >
           <div
             css={css`
-              height: 600px;
+              height: 400px;
+              overflow: hidden;
+
+              ${mq(`lg`)} {
+                height: 600px;
+              }
             `}
             style={{
               transform: `translate3d(0px, ${value * 2}px, 0px)`,
