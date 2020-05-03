@@ -211,6 +211,7 @@ const Hero: React.FC = () => {
       ref={ref}
       css={css`
         margin-bottom: 100px;
+        margin-top: 50px;
         overflow: hidden;
 
         ${mq(`lg`)} {

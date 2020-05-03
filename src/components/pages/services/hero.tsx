@@ -117,7 +117,7 @@ const Hero: React.FC = () => {
     <section
       ref={ref}
       css={css`
-        padding-top: 50px;
+        margin-top: 50px;
         margin-bottom: 50px;
 
         ${mq(`md`)} {

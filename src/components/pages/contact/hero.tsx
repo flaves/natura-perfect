@@ -160,6 +160,7 @@ const Hero: React.FC = () => {
         max-height: 600px;
         overflow: hidden;
         margin-bottom: 100px;
+        margin-top: 50px;
 
         ${mq(`lg`)} {
           padding-top: 40px;
