@@ -46,7 +46,7 @@ const Join: React.FC = () => {
         Vous pouvez aussi nous joindre ici
       </h2>
       <p>+32 499 62 95 59</p>
-      <p>hello@natura-perfect.be</p>
+      <p>florian@natura-perfect.be</p>
     </section>
   );
 };

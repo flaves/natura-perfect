@@ -12,6 +12,7 @@ import services from '../../../data/services.json';
 
 import ServiceEntity from '../../../types/service';
 import { ImageType } from '../../../types/image';
+import AnimTitle from '../../animation/animTitle';
 
 const query = graphql`
   {
@@ -174,7 +175,9 @@ const Services: React.FC = () => {
             }
           `}
         >
-          <h2>Services</h2>
+          <h2>
+            <AnimTitle delay={500}>Services</AnimTitle>
+          </h2>
           <p
             css={css`
               ${mq(`md`)} {
@@ -183,8 +186,10 @@ const Services: React.FC = () => {
               }
             `}
           >
-            Vous disposez d’un budget serré ou vous rêvez de grands projets ?{' '}
-            Notre large gamme de services est entièrement personnalisable.
+            <AnimTitle variant="fade" delay={750}>
+              Vous disposez d’un budget serré ou vous rêvez de grands projets ?{' '}
+              Notre large gamme de services est entièrement personnalisable.
+            </AnimTitle>
           </p>
         </div>
       </Container>

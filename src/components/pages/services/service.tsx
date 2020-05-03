@@ -113,7 +113,9 @@ const Service: React.FC<ServiceProps> = ({
             }
           `}
         >
-          <AnimTitle delay={500}>{service?.description}</AnimTitle>
+          <AnimTitle variant="fade" delay={500}>
+            {service?.description}
+          </AnimTitle>
         </p>
         <Button variant="black" onClick={() => toggleCurrent(id)}>
           Découvrez

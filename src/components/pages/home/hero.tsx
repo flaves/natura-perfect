@@ -99,7 +99,11 @@ const Title: React.FC = () => (
       <AnimTitle delay={500}>
         <span
           css={css`
-            color: black;
+            color: white;
+
+            ${mq(`lg`)} {
+              color: black;
+            }
           `}
         >
           Perfe
@@ -174,8 +178,10 @@ const Hero: React.FC = () => {
             position: relative;
             top: -78px;
             overflow: hidden;
+            margin-bottom: -78px;
 
             ${mq(`sm`)} {
+              margin-bottom: 0;
               top: -105px;
             }
 

@@ -3,25 +3,52 @@ import { css } from '@emotion/core';
 import { animated as a, useSpring } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
 
+type VariantType = `translate` | `fade` | undefined;
+
+const translate = (inView: boolean) => ({
+  from: {
+    transform: `translate3d(0, 100%, 0)`,
+    opacity: 0,
+  },
+  to: {
+    transform: inView ? `translate3d(0, 0%, 0)` : `translate3d(0, 100%, 0)`,
+    opacity: inView ? 1 : 0,
+  },
+});
+
+const fade = (inView: boolean) => ({
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: inView ? 1 : 0,
+  },
+});
+
+const renderVariant = (inView: boolean, variant: VariantType) => {
+  switch (variant) {
+    case 'fade':
+      return fade(inView);
+    case 'translate':
+      return translate(inView);
+    default:
+      return translate(inView);
+  }
+};
+
 interface TitleProps {
   children: React.ReactNode;
   delay?: number;
+  variant?: VariantType;
 }
 
-const AnimTitle: React.FC<TitleProps> = ({ children, delay = 0 }) => {
+const AnimTitle: React.FC<TitleProps> = ({ children, delay = 0, variant }) => {
   const [ref, inView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
   const spring = useSpring({
-    from: {
-      transform: `translate3d(0, 100%, 0)`,
-      opacity: 0,
-    },
-    to: {
-      transform: inView ? `translate3d(0, 0%, 0)` : `translate3d(0, 100%, 0)`,
-      opacity: inView ? 1 : 0,
-    },
+    ...renderVariant(inView, variant),
     delay,
     config: {
       friction: 30,
