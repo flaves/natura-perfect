@@ -3,11 +3,14 @@ import { css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
 import { Link } from 'gatsby';
 
+import mq from '../../styles/mq';
+
+import Flaves from '../../svg/flaves.svg';
+
 import { links } from './header';
 
 import { LinkType } from '../../types/link';
 import { ThemeType } from '../../styles/theme';
-import mq from '../../styles/mq';
 
 const Footer: React.FC = () => {
   const { color } = useTheme<ThemeType>();
@@ -57,8 +60,8 @@ const Footer: React.FC = () => {
       {renderLinks(links)}
       <div
         css={css`
-          font-size: 14px;
-          line-height: 1.5;
+          font-size: 18px;
+          line-height: 2;
           margin-bottom: 50px;
         `}
       >
@@ -86,6 +89,16 @@ const Footer: React.FC = () => {
         >
           &copy; {new Date().getFullYear()}
         </div>
+      </div>
+      <div
+        css={css`
+          margin-top: 50px;
+          text-align: center;
+        `}
+      >
+        <a href="https://flav.es" target="_blank" rel="noopener noreferrer">
+          <Flaves />
+        </a>
       </div>
     </footer>
   );

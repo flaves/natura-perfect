@@ -1,18 +1,18 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { css } from '@emotion/core';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import AliceCarousel from 'react-alice-carousel';
 
 import mq from '../../../styles/mq';
-import Next from '../../shared/carousel/next';
 
+import Next from '../../shared/carousel/next';
 import Container from '../../styled/container';
 import services from '../../../data/services.json';
+import AnimTitle from '../../animation/animTitle';
 
 import ServiceEntity from '../../../types/service';
 import { ImageType } from '../../../types/image';
-import AnimTitle from '../../animation/animTitle';
 
 const query = graphql`
   {
@@ -65,6 +65,7 @@ const Services: React.FC = () => {
       <AliceCarousel
         autoPlay
         autoPlayInterval={3000}
+        disableAutoPlayOnAction
         responsive={{
           0: {
             items: 1,

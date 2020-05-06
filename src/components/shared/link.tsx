@@ -90,12 +90,13 @@ const Link: React.FC<LinkProps> = ({ children, variant, ...props }) => {
           background-color: hsl(164, 19%, 15%);
           width: 100%;
           transition: background-color 0.2s, height 0.3s;
+          z-index: 2;
         `}
       />
       <span
         css={css`
           position: relative;
-          z-index: 2;
+          z-index: 3;
         `}
       >
         {children}
