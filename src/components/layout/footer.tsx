@@ -60,8 +60,8 @@ const Footer: React.FC = () => {
       {renderLinks(links)}
       <div
         css={css`
-          font-size: 14px;
-          line-height: 1.5;
+          font-size: 18px;
+          line-height: 2;
           margin-bottom: 50px;
         `}
       >
