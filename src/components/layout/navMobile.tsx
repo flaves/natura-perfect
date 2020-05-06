@@ -83,6 +83,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ active = false, links }) => {
         height: 100%;
         background-color: ${color.primary};
         z-index: 1000;
+        overflow: scroll;
 
         ${mq(`md`)} {
           padding: 100px;
