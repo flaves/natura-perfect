@@ -18,12 +18,12 @@ const Join: React.FC = () => {
 
         p {
           color: white;
-          font-size: 16px;
+          font-size: 20px;
           font-weight: 400;
           line-height: 2;
 
           ${mq(`md`)} {
-            font-size: 20px;
+            font-size: 24px;
           }
         }
       `}

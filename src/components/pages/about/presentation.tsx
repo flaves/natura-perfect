@@ -16,8 +16,8 @@ const query = graphql`
           maxWidth: 300
           maxHeight: 350
           fit: COVER
-          cropFocus: ATTENTION
-          quality: 80
+          cropFocus: CENTER
+          quality: 100
         ) {
           ...GatsbyImageSharpFluid_withWebp
         }
