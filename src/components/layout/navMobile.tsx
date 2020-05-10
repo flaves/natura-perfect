@@ -19,7 +19,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ active = false, links }) => {
   const translate = useSpring({
     transform: active
       ? `translate3d(0px, 0%, 0px)`
-      : `translate3d(0px, -100%, 0px)`,
+      : `translate3d(0px, -200%, 0px)`,
   });
   const reveals = useTrail(links.length, {
     opacity: active ? 1 : 0,

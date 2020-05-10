@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { css } from '@emotion/core';
 
 import NavDesktop from './navDesktop';
 import NavMobile from './navMobile';
 
 import { LinkType } from '../../types/link';
-import { css } from '@emotion/core';
 import mq from '../../styles/mq';
 
 export const links: LinkType[] = [
