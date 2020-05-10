@@ -13,7 +13,10 @@ import ServiceEntity from '../../../types/service';
 
 const query = graphql`
   {
-    allFile(filter: { relativeDirectory: { eq: "home/services" } }) {
+    allFile(
+      filter: { relativeDirectory: { eq: "home/services" } }
+      sort: { fields: name, order: ASC }
+    ) {
       edges {
         node {
           childImageSharp {
@@ -21,8 +24,8 @@ const query = graphql`
               maxWidth: 400
               maxHeight: 550
               fit: COVER
-              cropFocus: CENTER
-              quality: 80
+              cropFocus: ATTENTION
+              quality: 90
             ) {
               ...GatsbyImageSharpFluid_withWebp
             }

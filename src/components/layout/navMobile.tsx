@@ -19,7 +19,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ active = false, links }) => {
   const translate = useSpring({
     transform: active
       ? `translate3d(0px, 0%, 0px)`
-      : `translate3d(0px, -100%, 0px)`,
+      : `translate3d(0px, -200%, 0px)`,
   });
   const reveals = useTrail(links.length, {
     opacity: active ? 1 : 0,
@@ -83,6 +83,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ active = false, links }) => {
         height: 100%;
         background-color: ${color.primary};
         z-index: 1000;
+        overflow: scroll;
 
         ${mq(`md`)} {
           padding: 100px;

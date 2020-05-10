@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { css } from '@emotion/core';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
@@ -16,16 +16,19 @@ import { ImageType } from '../../../types/image';
 
 const query = graphql`
   {
-    allFile(filter: { relativeDirectory: { eq: "home/services" } }) {
+    allFile(
+      filter: { relativeDirectory: { eq: "home/services" } }
+      sort: { fields: name, order: ASC }
+    ) {
       edges {
         node {
           childImageSharp {
             fluid(
-              maxWidth: 300
-              maxHeight: 400
+              maxWidth: 350
+              maxHeight: 450
               fit: COVER
-              cropFocus: CENTER
-              quality: 80
+              cropFocus: ATTENTION
+              quality: 90
             ) {
               ...GatsbyImageSharpFluid_withWebp
             }

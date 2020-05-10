@@ -70,7 +70,7 @@ const query = graphql`
         fluid(
           maxWidth: 1440
           maxHeight: 700
-          cropFocus: CENTER
+          cropFocus: SOUTH
           fit: COVER
           quality: 80
         ) {
