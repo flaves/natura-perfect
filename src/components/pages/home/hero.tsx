@@ -17,8 +17,8 @@ const query = graphql`
       childImageSharp {
         fluid(
           maxWidth: 500
-          maxHeight: 700
-          cropFocus: CENTER
+          maxHeight: 500
+          cropFocus: SOUTH
           fit: COVER
           quality: 80
         ) {
@@ -30,8 +30,8 @@ const query = graphql`
       childImageSharp {
         fluid(
           maxWidth: 700
-          maxHeight: 700
-          cropFocus: CENTER
+          maxHeight: 500
+          cropFocus: SOUTH
           fit: COVER
           quality: 80
         ) {
@@ -43,8 +43,8 @@ const query = graphql`
       childImageSharp {
         fluid(
           maxWidth: 800
-          maxHeight: 700
-          cropFocus: CENTER
+          maxHeight: 500
+          cropFocus: SOUTH
           fit: COVER
           quality: 80
         ) {
@@ -57,7 +57,7 @@ const query = graphql`
         fluid(
           maxWidth: 1000
           maxHeight: 700
-          cropFocus: CENTER
+          cropFocus: SOUTH
           fit: COVER
           quality: 80
         ) {
