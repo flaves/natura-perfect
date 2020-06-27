@@ -2,10 +2,11 @@ import React from 'react';
 import { css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
 
+import mq from '../styles/mq';
+
 import Logo from '../svg/logo.svg';
 
 import { ThemeType } from '../styles/theme';
-import mq from '../styles/mq';
 
 const Waiting: React.FC = () => {
   const { color } = useTheme<ThemeType>();
