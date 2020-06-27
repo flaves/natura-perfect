@@ -15,7 +15,7 @@ interface ServiceProps {
   id: number;
   service: ServiceEntity;
   scrollTo: boolean;
-  toggleCurrent: Function;
+  toggleCurrent: () => void;
 }
 
 const Service: React.FC<ServiceProps> = ({

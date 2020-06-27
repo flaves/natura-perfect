@@ -119,8 +119,9 @@ const Gallery: React.FC = () => {
             `}
           />
         </li>
-        {images?.map((image) => (
+        {images?.map((image, key) => (
           <li
+            key={key}
             css={css`
               overflow: hidden;
 
